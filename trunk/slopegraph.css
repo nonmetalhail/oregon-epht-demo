@@ -1,0 +1,116 @@
+body {
+  font-family:georgia;
+  text-align:center;
+}
+
+h1 {
+  margin:0;
+}
+
+#description  {
+  color:black;
+  text-decoration:none;
+  font-size:1.2em;
+  display:block;
+  width:20%;
+  position:fixed;
+  right:0;
+  border:2px solid white;
+  border-top:1px solid white;
+  border-left:1px solid white;
+  border-bottom:1px solid white;
+  padding:20px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+
+#description h1 {
+  font-variant: small-caps;
+  font-size:4em;
+}
+
+#description p {
+  text-align:left;
+}
+
+#description a:hover {
+  border:2px solid gray;/*black;*/
+  border-top:1px solid lightgray;
+  border-left:1px solid lightgray;
+  border-bottom:1px solid lightgray;
+  background-color: white; /*#4F4F4F;*/
+}
+
+#project-header {
+  font-family:helvetica;
+  position:fixed;
+  left:0;
+  top:0;
+  border: 1px solid white;
+  padding:10px;
+
+}
+
+#project-header a {
+  text-decoration:none;
+  color:black;
+}
+
+#go-back {
+  font-size:.5em;
+  color:gray;
+  display:none;
+}
+
+#project-header:hover {
+  border: 1px solid lightgray;
+}
+
+#project-header:hover #go-back {
+  display:block;
+}
+
+#description {
+  font-size:.75em;
+  margin-bottom:.3em;
+  margin-left:auto;
+  margin-right:auto;
+  width:30%;
+}
+
+a#lowess {
+  text-decoration:none;
+  color:red;
+  font-weight:bold;
+  display:inline;
+}
+
+a#lowess:hover {
+  text-decoration:underline;
+}
+
+#footer {
+  text-align:right;∫
+  margin:0;
+  right:0;
+  bottom:0;
+  position:fixed;
+  width:250px;
+  padding:15px;
+}
+
+.rotten {
+  color:red;
+}
+
+.chart rect {
+}
+
+line.over{
+  stroke: #bb2629;
+  stroke-width: 2;
+}
+
+text.over{
+  fill: #bb2629;
+}
