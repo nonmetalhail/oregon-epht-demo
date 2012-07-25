@@ -28,6 +28,28 @@
  *
  */
 
+var ft_datasets = {
+  'asthma':{
+    'title': 'Asthma',
+    'tid': '1AzMRV-2WSSNeLOalrKdX0sEKry3oIxwTwNnJAwA'
+  },
+  'male':{
+    'title': 'Asthma',
+    'tid': '1Z_oTv84uXB8pUg66wKszkndWMwtDK1CbmB3UGIA'
+  },
+  'female':{
+    'title': 'Asthma',
+    'tid': '1IabRRnJ2CspLTwLruJz8or6QjhGb6NEVvXy8JqQ'
+  },
+  'cancer':{
+    'title': 'Cancer',
+    'tid': '1glNdT_IDaWxjw4Fv2SZgsi64_-2Yb7cdhnMfdSs'
+  },
+  'heart attack':{
+    'title': 'Heart Attack',
+    'tid': '1Mwr9Fh2b_7kpjYXtxilXXxG8-juVB77yFoxSrqU'
+  }
+}
 
 var WIDTH = 500;
 var HEIGHT = 850;
@@ -52,10 +74,8 @@ $(document).ready(function(){
   DataSet.prototype.set = '';
   DataSet.prototype.year = '';
   DataSet.prototype.tid = '';
+  DataSet.prototype.title = '';
 
-  DataSet.prototype.set_name = function(name){
-    this.name = name;
-  };
   DataSet.prototype.set_set = function(set){
     this.set = set;
   };
@@ -65,18 +85,43 @@ $(document).ready(function(){
   DataSet.prototype.set_tid = function(tid){
     this.tid = tid;
   };
+  DataSet.prototype.set_title = function(title){
+    this.title = title;
+  };
 
   epht.data1 = new DataSet();
   epht.data2 = new DataSet();
 
+  //set 
   epht.data1.set_set($('#data_set1 option:selected').attr('value'));
   epht.data2.set_set($('#data_set2 option:selected').attr('value'));
+  // table
+  // epht.data1.set_tid('1tzCz8LpvWJU_73zfNnUGOC7Z1MveXTsyQajqdKo');
+  // epht.data2.set_tid('1DM18V3sby3TPRp6WQF889D4aRnoVUCy7QbKEO1o');
+  epht.data1.set_tid(ft_datasets[epht.data1.set]['tid']);
+  epht.data2.set_tid(ft_datasets[epht.data2.set]['tid']);
+  //year
   epht.data1.set_year($('#year1 option:selected').attr('value'));
   epht.data2.set_year($('#year2 option:selected').attr('value'));
-  epht.data1.set_name('left');
-  epht.data1.set_tid('1tzCz8LpvWJU_73zfNnUGOC7Z1MveXTsyQajqdKo');
-  epht.data2.set_name('right');
-  epht.data2.set_tid('1DM18V3sby3TPRp6WQF889D4aRnoVUCy7QbKEO1o');
+
+  //Black centered title
+  epht.data1.set_title(ft_datasets[epht.data1.set]['title']);
+  epht.data2.set_title(ft_datasets[epht.data2.set]['title']);
+
+  //name: the grey title text for each side
+  
+  DataSet.prototype.set_name = function(){
+    if(epht.data1.set == epht.data2.set){
+      console.log("same");
+      this.name = this.year;
+    }
+    else{
+      console.log("different");
+      this.name = this.set;
+    }
+  };
+  epht.data1.set_name();
+  epht.data2.set_name();
 
   // functions with arguments in the done get called immediately; 
   // would have to do: .done(g.createVis) and restructure so 
@@ -84,35 +129,44 @@ $(document).ready(function(){
   // wrapping in anon function allieviates this, though looks funky
   $.when(getFTData(epht.data1),getFTData(epht.data2))
     .done(function(){
-      g.createVis(epht.data1.set,epht.data2.set,epht.data1.data,epht.data2.data)
+      g.createVis(epht.data1.name,epht.data2.name,
+        epht.data1.data,epht.data2.data,epht.data1.title,epht.data2.title)
     });
 
   DataSet.prototype.update_data = function(){
     $.when(getFTData(this))
       .done(function(){
-        g.updateVis(epht.data1.set,epht.data2.set,epht.data1.data,epht.data2.data)
+        g.updateVis(epht.data1.name,epht.data2.name,
+          epht.data1.data,epht.data2.data,epht.data1.title,epht.data2.title)
       });
   }
 
   $('#data_set1').live('change',function(){
     epht.data1.set_set(this.value);
-    // update_data(epht.data1);
+    epht.data1.set_title(ft_datasets[epht.data1.set]['title']);
+    epht.data1.set_tid(ft_datasets[epht.data1.set]['tid']);
+    epht.data1.set_name();
+    
     epht.data1.update_data();
+
   });
   $('#data_set2').live('change',function(){
     epht.data2.set_set(this.value);
-    // update_data(epht.data2);
+    epht.data2.set_title(ft_datasets[epht.data2.set]['title']);
+    epht.data2.set_tid(ft_datasets[epht.data2.set]['tid']);
+    epht.data2.set_name();
+
     epht.data2.update_data();
   });
 
   $('#year1').live('change',function(){
     epht.data1.set_year(this.value);
-    // update_data(epht.data1);
+    epht.data1.set_name();
     epht.data1.update_data();
   });
   $('#year2').live('change',function(){
     epht.data2.set_year(this.value);
-    // update_data(epht.data2);
+    epht.data2.set_name();
     epht.data2.update_data();
   });
 });
@@ -128,17 +182,17 @@ function getFTData(obj){
   *   county1, x,  2001
   *   county2, x,  2001
   */
-  var query = "SELECT col1,col0 FROM " + obj.tid + " WHERE 'Year'='"+ obj.year+"'"
+  // var query = "SELECT col1,col0 FROM " + obj.tid + " WHERE 'Year'='"+ obj.year+"'"
   /*
   * query for data in the form of:
   * geography, year1, year2, ...
   *   county1, x1,  x2
   *   county2, x1,  x2
   */
-  // var query = "SELECT 'Geography',"+obj.year+" FROM " + obj.tid + "'"
-
+  var query = "SELECT 'Geography','"+obj.year+"' FROM " + obj.tid;
   var encodedQuery = encodeURIComponent(query);
   var tail = '&key=AIzaSyA7_yvmF6Aj0z9ctqiVVS5BI9cVIqx7F1w';
+  console.log(url+encodedQuery+tail);
   $.getJSON(url+encodedQuery+tail,function(resp){
     console.log(url+encodedQuery+tail);
     console.log(resp);
@@ -352,14 +406,14 @@ function slopeGraphBuilder(){
   };
 
   this.formatData = function(y1,y2,dTable1,dTable2){
-    var data = _to_data('male','female', dTable1,dTable2);
+    var data = _to_data(y1,y2, dTable1,dTable2);
     calcRange(data);
 
     data = _slopegraph_preprocess(data);
     return data;
   }
 
-  this.createVis = function(y1,y2,dTable1,dTable2){
+  this.createVis = function(y1,y2,dTable1,dTable2,title1,title2){
     console.log(dTable1);
     data = this.formatData(y1,y2,dTable1,dTable2);
 
@@ -412,7 +466,9 @@ function slopeGraphBuilder(){
       .attr('x', WIDTH/2)
       .attr('y', TOP_MARGIN/2)
       .attr('text-anchor', 'middle')
-      .text('Asthma Rates in Oregon')
+      .text(function(){
+        if(title1==title2){return title1 + ' Rates in Oregon'}
+        else{return 'Disease Rates in Oregon'} })
       .attr('font-variant', 'small-caps');
 
 
@@ -499,7 +555,7 @@ function slopeGraphBuilder(){
       
   }
 
-  this.updateVis = function(y1,y2,dTable1,dTable2){
+  this.updateVis = function(y1,y2,dTable1,dTable2,title1,title2){
     data = this.formatData(y1,y2,dTable1,dTable2);
 
     _y = d3.scale.linear()
@@ -509,10 +565,17 @@ function slopeGraphBuilder(){
     function y(d,i){
       return HEIGHT - _y(d)
     }
-
+    this.title
+      .text(function(){
+        if(title1==title2){return title1 + ' Rates in Oregon'}
+        else{return 'Disease Rates in Oregon'} });
+    this.y1t
+      .text(y1);
+    this.y2t
+      .text(y2);
     this.ll
       .data(data)
-      .text(function(d,i){ return d.label})
+      .text(function(d,i){ return d.label.toUpperCase()})
       .transition()
       .duration(300)
       .ease('quad')
@@ -534,7 +597,7 @@ function slopeGraphBuilder(){
 
     this.rl
       .data(data)
-      .text(function(d,i){ return d.label})
+      .text(function(d,i){ return d.label.toUpperCase()})
       .transition()
       .duration(300)
       .ease('quad')
