@@ -37,9 +37,6 @@ var RIGHT_MARGIN = 150;
 var TOP_MARGIN = 50;
 var BOTTOM_MARGIN = 50;
 
-var Y1 = 'male';
-var Y2 = 'female';
-
 var ELIGIBLE_SIZE = HEIGHT - TOP_MARGIN - BOTTOM_MARGIN;
 
 var g = new slopeGraphBuilder();
@@ -81,60 +78,47 @@ $(document).ready(function(){
   epht.data2.set_name('right');
   epht.data2.set_tid('1DM18V3sby3TPRp6WQF889D4aRnoVUCy7QbKEO1o');
 
-  // getFTData(epht.data1,
-  //   getFTData(epht.data2, 
-  //     g.createVis('male','female',epht.data1.data,epht.data2.data)));
-
-  var url = 'https://www.googleapis.com/fusiontables/v1/query?sql=';
-  var query = "SELECT col1,col0 FROM " + epht.data1.tid + " WHERE 'Year'='"+epht.data1.year+"'"
-  var encodedQuery = encodeURIComponent(query);
-  var tail = '&key=AIzaSyA7_yvmF6Aj0z9ctqiVVS5BI9cVIqx7F1w';
-  $.getJSON(url+encodedQuery+tail,function(resp){
-    console.log(url+encodedQuery+tail);
-    // console.log(resp);
-    epht.data1.data = resp;
-    var url = 'https://www.googleapis.com/fusiontables/v1/query?sql=';
-    var query = "SELECT col1,col0 FROM " + epht.data2.tid + " WHERE 'Year'='"+epht.data2.year+"'"
-    var encodedQuery = encodeURIComponent(query);
-    var tail = '&key=AIzaSyA7_yvmF6Aj0z9ctqiVVS5BI9cVIqx7F1w';
-    $.getJSON(url+encodedQuery+tail,function(resp){
-      console.log(url+encodedQuery+tail);
-      // console.log(resp);
-      epht.data2.data = resp;
-      g.createVis('male','female',epht.data1.data,epht.data2.data);
+  // functions with arguments in the done get called immediately; 
+  // would have to do: .done(g.createVis) and restructure so 
+  // data1 and data2 are the returns of the when fucntions
+  // wrapping in anon function allieviates this, though looks funky
+  $.when(getFTData(epht.data1),getFTData(epht.data2))
+    .done(function(){
+      g.createVis(epht.data1.set,epht.data2.set,epht.data1.data,epht.data2.data)
     });
-  });
 
   DataSet.prototype.update_data = function(){
-    getFTData(this,
-      g.updateVis('male','female',epht.data1.data,epht.data2.data))
+    $.when(getFTData(this))
+      .done(function(){
+        g.updateVis(epht.data1.set,epht.data2.set,epht.data1.data,epht.data2.data)
+      });
   }
 
   $('#data_set1').live('change',function(){
     epht.data1.set_set(this.value);
-    update_data(epht.data1);
-    // epht.data1.update_data();
+    // update_data(epht.data1);
+    epht.data1.update_data();
   });
   $('#data_set2').live('change',function(){
     epht.data2.set_set(this.value);
-    update_data(epht.data2);
-    // epht.data2.update_data();
+    // update_data(epht.data2);
+    epht.data2.update_data();
   });
 
   $('#year1').live('change',function(){
     epht.data1.set_year(this.value);
-    update_data(epht.data1);
-    // epht.data1.update_data();
+    // update_data(epht.data1);
+    epht.data1.update_data();
   });
   $('#year2').live('change',function(){
     epht.data2.set_year(this.value);
-    update_data(epht.data2);
-    // epht.data2.update_data();
+    // update_data(epht.data2);
+    epht.data2.update_data();
   });
 });
 
-function update_data(obj){
-  // getFTData(this,updateHelper())
+function getFTData(obj){
+  var d = $.Deferred();
   var url = 'https://www.googleapis.com/fusiontables/v1/query?sql=';
   /*
   * query for data in the form of:
@@ -159,21 +143,13 @@ function update_data(obj){
     console.log(url+encodedQuery+tail);
     console.log(resp);
     obj.data = resp;
-    g.updateVis('male','female',epht.data1.data,epht.data2.data);
-  });
-};
+  })
+  .done(function(p){
+    d.resolve(p);
+  })
+  .fail(d.reject);
 
-function getFTData(obj,func){
-  var url = 'https://www.googleapis.com/fusiontables/v1/query?sql=';
-  var query = "SELECT col1,col0 FROM " + obj.tid + " WHERE 'Year'='"+obj.year+"'"
-  var encodedQuery = encodeURIComponent(query);
-  var tail = '&key=AIzaSyA7_yvmF6Aj0z9ctqiVVS5BI9cVIqx7F1w';
-  $.getJSON(url+encodedQuery+tail,function(resp){
-    console.log(url+encodedQuery+tail);
-    console.log(resp);
-    obj.data = resp;
-    func;
-  });
+  return d.promise();
 }
 
 function slopeGraphBuilder(){
@@ -450,7 +426,7 @@ function slopeGraphBuilder(){
         .attr('font-size', 10)
         .attr('font-weight', 'bold')
         .attr('text-anchor', 'end')
-        .text(function(d,i){ return d.label})
+        .text(function(d,i){ return d.label.toUpperCase()})
         .attr('fill', 'black')
         .attr("class",function(d){return d.label})
         .on("mouseover", function(d){return d3.selectAll('.'+d.label).classed("over",true);})
@@ -481,7 +457,7 @@ function slopeGraphBuilder(){
         .attr('dx', 35)
         .attr('font-weight', 'bold')
         .attr('font-size', 10)
-        .text(function(d,i){ return d.label})
+        .text(function(d,i){ return d.label.toUpperCase()})
         .attr('fill', 'black')
         .attr("class",function(d){return d.label})
         .on("mouseover", function(d){return d3.selectAll('.'+d.label).classed("over",true);})
