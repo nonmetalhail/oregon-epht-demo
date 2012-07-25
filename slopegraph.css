@@ -106,6 +106,15 @@ a#lowess:hover {
 .chart rect {
 }
 
+line.Oregon{
+  stroke: #000cff;
+  stroke-width: 2;
+}
+
+text.Oregon{
+  fill: #000cff;
+}
+
 line.over{
   stroke: #bb2629;
   stroke-width: 2;
