@@ -6,7 +6,15 @@
     <script type="text/javascript" src = "slopegraph.js"></script>
   </head>
   <body>
-    <div id='slopegraph'></div>
+    <section id="wrapper">
+      <div id='slopegraph'></div>
+      <div id = 'infobox'>
+        <h2 id="c_name">County</h2>
+        <h1 id="difference">+18.1</h1>
+        <h4><span class = "num" id = "num_left">11.7</span>-<span class = "num" id = "num_right">17.1</span></h4>
+      </div>
+    </section>
+    <section id="contols">
     <select id = "data_set1">
       <option value = "asthma">Asthma Total</option>
       <option value = "male" selected="selected">Asthma Male</option>
@@ -41,5 +49,6 @@
       <option value = "2001">2001</option>
       <option value = "2000">2000</option>
     </select>
+  </section>
   </body>
 </html>
