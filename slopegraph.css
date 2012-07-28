@@ -62,9 +62,6 @@ h4{
   display:block;
 }
 
-.chart rect {
-}
-
 line.Oregon{
   stroke: #000cff;
   stroke-width: 2;
@@ -77,8 +74,10 @@ text.Oregon{
 line.over{
   stroke: #bb2629;
   stroke-width: 2;
+  opacity: 1;
 }
 
 text.over{
   fill: #bb2629;
+  opacity: 1;
 }
