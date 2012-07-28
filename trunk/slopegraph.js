@@ -714,7 +714,8 @@ function slopeGraphBuilder(){
 
   // fade vis by setting opacity to .5
   function fadeRest(){
-    $('g').children().css('opacity',.5);
+    $('g').children().css('opacity',.3);
+    $('.Oregon').css('opacity',1);
   }
   // unfade vis by setting opacity to 1
   function unfadeRest(){
