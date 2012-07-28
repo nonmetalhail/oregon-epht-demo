@@ -16,8 +16,12 @@
  *
  *
  * @fileoverview 
- * d3.js visualization drwaing Slopegraphs
+ * d3.js visualization creating an interactive Slopegraph
  * uses Fusion Tables as the database
+ * Explores datasets originally found at:
+ * Oregon Environmental Public Health Tracking
+ * https://epht.oregon.gov/
+ * 
  * 
  * @author nahman@google.com (Elliot Nahman)
  *
@@ -28,6 +32,9 @@
  *
  */
 
+// fusion table table id and a title which should match the html select values
+// in a better world, i would automate populating the selects with these values
+// the year values could be populated by calling a DESCRIBE on the table, etc
 var ft_datasets = {
   'asthma':{
     'title': 'Asthma',
@@ -51,6 +58,8 @@ var ft_datasets = {
   }
 }
 
+// General d3 vis setup
+
 var WIDTH = 500;
 var HEIGHT = 850;
 
@@ -62,7 +71,6 @@ var BOTTOM_MARGIN = 50;
 var ELIGIBLE_SIZE = HEIGHT - TOP_MARGIN - BOTTOM_MARGIN;
 
 var g = new slopeGraphBuilder();
-
 var epht = {};
 
 $(document).ready(function(){
@@ -217,7 +225,7 @@ function slopeGraphBuilder(){
  *    }
  *  ]
 **/
-  _to_data = function (y1,y2,d1,d2){
+  _to_data = function (d1,d2){
     var y1d = d1["rows"];
     var y2d = d2["rows"];
     var _d = {};
@@ -240,9 +248,6 @@ function slopeGraphBuilder(){
         _d[y2d[k2][0]].right = 0;
       }
     }
-    // top lables
-    Y1 = y1;
-    Y2 = y2;
 
     //converts _d from object of object to array of object
     dt = [];
@@ -262,6 +267,11 @@ function slopeGraphBuilder(){
   }
 
   // Calculates range and y-vals for the datatable
+  /* 
+    Funny thing is it does so but then you have to 
+    recalculate for each item; not sure why, didnt have time
+    to figure out why and redo it so it only does once.
+  */
   calcRange = function(data){
 
     _y.domain([_min_key(data), _max_key(data)])
@@ -405,8 +415,8 @@ function slopeGraphBuilder(){
     return d;
   };
 
-  this.formatData = function(y1,y2,dTable1,dTable2){
-    var data = _to_data(y1,y2, dTable1,dTable2);
+  this.formatData = function(dTable1,dTable2){
+    var data = _to_data(dTable1,dTable2);
     calcRange(data);
 
     data = _slopegraph_preprocess(data);
@@ -414,36 +424,40 @@ function slopeGraphBuilder(){
   }
 
   this.createVis = function(y1,y2,dTable1,dTable2,title1,title2){
-    console.log(dTable1);
-    data = this.formatData(y1,y2,dTable1,dTable2);
+    data = this.formatData(dTable1,dTable2);
 
     // var min, max;
     var _ = _min_max(data)
     this.min = _[0];
     this.max = _[1];
 
+    _y.domain([this.max, this.min])
+      .range([TOP_MARGIN, HEIGHT-BOTTOM_MARGIN])
+
     var sg = d3.select('#slopegraph')
       .append('svg:svg')
       .attr('width', WIDTH)
       .attr('height', HEIGHT);
 
-    _y.domain([this.max, this.min])
-      .range([TOP_MARGIN, HEIGHT-BOTTOM_MARGIN])
+    // group tag for the body of the vis in case we want to do global selections
+    var g = sg.append('svg:g');
 
+    // grey category title on the left
     this.y1t = sg.append('svg:text')
       .attr('x', LEFT_MARGIN)
       .attr('y', TOP_MARGIN/2)
       .attr('text-anchor', 'end')
       .attr('opacity', .5)
-      .text(Y1);
+      .text(y1);
 
-    //
+    // grey category title on the right
     this.y2t = sg.append('svg:text')
       .attr('x', WIDTH-RIGHT_MARGIN)
       .attr('y', TOP_MARGIN/2)
       .attr('opacity', .5)
-      .text(Y2);
+      .text(y2);
 
+    // Title underline
     sg.append('svg:line')
       .attr('x1', LEFT_MARGIN/2)
       .attr('x2', WIDTH-RIGHT_MARGIN/2)
@@ -452,33 +466,66 @@ function slopeGraphBuilder(){
       .attr('stroke', 'black')
       .attr('opacity', .5);
 
+    // main black title
     this.title = sg.append('svg:text')
       .attr('x', WIDTH/2)
       .attr('y', TOP_MARGIN/2)
       .attr('text-anchor', 'middle')
+      // text changes if select menu 1 & 2 have same set
       .text(function(){
         if(title1==title2){return title1 + ' Rates in Oregon'}
         else{return 'Disease Rates in Oregon'} })
       .attr('font-variant', 'small-caps');
 
+    /*
+    If I had written this from scratch, it probably would have made more sense to:
+      group each set (same county ll, lv, slope, rv, rl) in a <g>
+      Then addressing the group would be much easier
+      each <g> could then have a attr for the county and classes applied to it instead
+      This *might* also have made the animation work proper
+    */
 
-    this.ll = sg.selectAll('.left_labels')
+    // I will only mark up ll: others are all similar
+    // left labels
+    this.ll = g.selectAll('.left_labels')
       .data(data).enter().append('svg:text')
         .attr('x', LEFT_MARGIN-35)
         .attr('y', function(d,i){
+          // recalculates coordinate
           return y(d.left_coord)
         })
         .attr('dy', '.35em')
         .attr('font-size', 10)
         .attr('font-weight', 'bold')
         .attr('text-anchor', 'end')
+        // toUpperCase only applied to Oregon, others were already CAPS
         .text(function(d,i){ return d.label.toUpperCase()})
         .attr('fill', 'black')
+        // replace is for Hood River; else interpreted as two separate classes
         .attr("class",function(d){return d.label.replace(' ','_')})
-        .on("mouseover", function(d){displayBox(d,false);return d3.selectAll('.'+d.label.replace(' ','_')).classed("over",true);})
-        .on("mouseout", function(d){return d3.selectAll('.'+d.label.replace(' ','_')).classed("over",false).call(removeBox);});
+        .on("mouseover", function(d){
+          // runs displayBox function to show info pane
+          displayBox(d,false);
+          // returns a whole mess of stuff: again, replace for Hood River
+          // select all elements for a county based on class name
+          return d3.selectAll('.'+d.label.replace(' ','_'))
+            // add class over, see CSS
+            .classed("over",true)
+            // run function fadeRest to lower opacity
+            .call(fadeRest)
+            // override the above action on this county
+            .style('opacity',1);
+        })
+        // mouseout, basically reverses mouseover
+        .on("mouseout", function(d){
+          return d3.selectAll('.'+d.label.replace(' ','_'))
+          .classed("over",false)
+          .call(removeBox)
+          .call(unfadeRest);
+        });
 
-    this.lv = sg.selectAll('.left_values')
+    // left values
+    this.lv = g.selectAll('.left_values')
       .data(data).enter().append('svg:text')
         .attr('x', LEFT_MARGIN-10)
         .attr('y', function(d,i){
@@ -490,10 +537,22 @@ function slopeGraphBuilder(){
         .text(function(d,i){ return d.left})
         .attr('fill', 'black')
         .attr("class",function(d){return d.label.replace(' ','_')})
-        .on("mouseover", function(d){displayBox(d,false);return d3.selectAll('.'+d.label.replace(' ','_')).classed("over",true);})
-        .on("mouseout", function(d){return d3.selectAll('.'+d.label.replace(' ','_')).classed("over",false).call(removeBox);});
+        .on("mouseover", function(d){
+          displayBox(d,false);
+          return d3.selectAll('.'+d.label.replace(' ','_'))
+            .classed("over",true)
+            .call(fadeRest)
+            .style('opacity',1);
+        })
+        .on("mouseout", function(d){
+          return d3.selectAll('.'+d.label.replace(' ','_'))
+          .classed("over",false)
+          .call(removeBox)
+          .call(unfadeRest);
+        });
 
-    this.rl = sg.selectAll('.right_labels')
+    // right labels
+    this.rl = g.selectAll('.right_labels')
       .data(data).enter().append('svg:text')
         .attr('x', WIDTH-RIGHT_MARGIN)
         .attr('y', function(d,i){
@@ -506,11 +565,22 @@ function slopeGraphBuilder(){
         .text(function(d,i){ return d.label.toUpperCase()})
         .attr('fill', 'black')
         .attr("class",function(d){return d.label.replace(' ','_')})
-        .on("mouseover", function(d){displayBox(d,true);return d3.selectAll('.'+d.label.replace(' ','_')).classed("over",true);})
-        .on("mouseout", function(d){return d3.selectAll('.'+d.label.replace(' ','_')).classed("over",false).call(removeBox);});
+        .on("mouseover", function(d){
+          displayBox(d,true);
+          return d3.selectAll('.'+d.label.replace(' ','_'))
+            .classed("over",true)
+            .call(fadeRest)
+            .style('opacity',1);
+        })
+        .on("mouseout", function(d){
+          return d3.selectAll('.'+d.label.replace(' ','_'))
+            .classed("over",false)
+            .call(removeBox)
+            .call(unfadeRest);
+        });
 
-    //
-    this.rv = sg.selectAll('.right_values')
+    //right values
+    this.rv = g.selectAll('.right_values')
       .data(data).enter().append('svg:text')
         .attr('x', WIDTH-RIGHT_MARGIN)
         .attr('y', function(d,i){
@@ -522,10 +592,22 @@ function slopeGraphBuilder(){
         .text(function(d,i){ return d.right})
         .attr('fill', 'black')
         .attr("class",function(d){return d.label.replace(' ','_')})
-        .on("mouseover", function(d){displayBox(d,true);return d3.selectAll('.'+d.label.replace(' ','_')).classed("over",true);})
-        .on("mouseout", function(d){return d3.selectAll('.'+d.label.replace(' ','_')).classed("over",false).call(removeBox);});
+        .on("mouseover", function(d){
+          displayBox(d,true);
+          return d3.selectAll('.'+d.label.replace(' ','_'))
+            .classed("over",true)
+            .call(fadeRest)
+            .style('opacity',1);
+        })
+        .on("mouseout", function(d){
+          return d3.selectAll('.'+d.label.replace(' ','_'))
+            .classed("over",false)
+            .call(removeBox)
+            .call(unfadeRest);
+        });
 
-    this.slopes = sg.selectAll('.slopes')
+    // slope lines
+    this.slopes = g.selectAll('.slopes')
       .data(data).enter().append('svg:line')
         .attr('x1', LEFT_MARGIN)
         .attr('x2', WIDTH-RIGHT_MARGIN)
@@ -535,18 +617,28 @@ function slopeGraphBuilder(){
         .attr('y2', function(d,i){
           return y(d.right_coord)
         })
-        .attr('opacity', .6)
-        .attr('stroke', 'black')
+        .attr('stroke', '#777')
         .attr("class",function(d){return d.label.replace(' ','_')})
-        .on("mouseover", function(d){displayBox(d,true);return d3.selectAll('.'+d.label.replace(' ','_')).classed("over",true);})
-        .on("mouseout", function(d){return d3.selectAll('.'+d.label.replace(' ','_')).classed("over",false).call(removeBox);});
+        .on("mouseover", function(d){
+          displayBox(d,true);
+          return d3.selectAll('.'+d.label.replace(' ','_'))
+            .classed("over",true)
+            .call(fadeRest)
+            .style('opacity',1);
+        })
+        .on("mouseout", function(d){
+          return d3.selectAll('.'+d.label.replace(' ','_'))
+            .classed("over",false)
+            .call(removeBox)
+            .call(unfadeRest);
+        });
 
     // sg.selectAll('text')
       
   }
 
   this.updateVis = function(y1,y2,dTable1,dTable2,title1,title2){
-    data = this.formatData(y1,y2,dTable1,dTable2);
+    data = this.formatData(dTable1,dTable2);
 
     _y.domain([this.max, this.min])
       .range([TOP_MARGIN, HEIGHT-BOTTOM_MARGIN]);
@@ -620,51 +712,50 @@ function slopeGraphBuilder(){
       .attr("class",function(d){return d.label.replace(' ','_')});
   }
 
-function displayBox(d,right) 
-{ 
-  console.log(d);
-  var lVal = d.left;
-  var rVal = d.right;
-  var yRaw = (right)? y(d.right_coord):y(d.left_coord);
-  var yCoord = (yRaw < 100)? yRaw : yRaw-100;
-  var dv = Math.round((rVal-lVal)*100)/100;
-  var diffVal = (dv > 0)? '+'+dv : dv;
+  // fade vis by setting opacity to .5
+  function fadeRest(){
+    $('g').children().css('opacity',.5);
+  }
+  // unfade vis by setting opacity to 1
+  function unfadeRest(){
+    $('g').children().css('opacity',1);
+  }
 
-  // var lr = (right)? ' ':-100;
-  // console.log(lr);
-  
-  d3.select("#infobox").style("top", yCoord);
-  if(right){$('#infobox').removeClass("info_left")}
-  else{$('#infobox').addClass("info_left")};  
+  //shows the box
+  // pass in the associated datatable and 
+  // bool to indicate if the hover is on the right or left
+  function displayBox(d,right) 
+  { 
+    console.log(d);
+    var lVal = d.left;
+    var rVal = d.right;
+    // if on the right, use right coord, else use left
+    var yRaw = (right)? y(d.right_coord) : y(d.left_coord);
+    // move the box along with the graph, but dont move it off the top of window
+    var yCoord = (yRaw < 100)? yRaw : yRaw-100;
+    // round to 2 decimals
+    var dv = Math.round((rVal-lVal)*100)/100;
+    // if the difference is a positive value, add a +
+    var diffVal = (dv > 0)? '+'+dv : dv;
 
-  d3.select("#c_name").text(d.label);
-  d3.select("#difference").text(diffVal);
-  d3.select("#num_left").text(lVal);
-  d3.select("#num_right").text(rVal);
+    // set y location of info box
+    d3.select("#infobox").style("top", yCoord);
+    // set x location of infobox using class to override
+    // default (right) sets right location
+    // left sets a left location which overrides the right
+    if(right){$('#infobox').removeClass("info_left")}
+    else{$('#infobox').addClass("info_left")};  
 
-  d3.select("#infobox").style("display", "block");
-
-} 
-
-function removeBox() 
-{ 
-    d3.select("#infobox").style("display", "none"); 
-} 
-  // changed to css class
-  // _displayRedFill = function(){
-  //   d3.select(this)
-  //     .attr('fill', '#bb2629')
-  // }
-  // _displayBlackFill = function(){
-  //   d3.select(this)
-  //     .attr('fill', 'black')
-  // }
-  //   _displayRedStroke = function(){
-  //   d3.select(this)
-  //     .attr('stroke', '#bb2629');
-  // }
-  // _displayBlackStroke = function(){
-  //   d3.select(this)
-  //     .attr('stroke', 'black');
-  // }
+    d3.select("#c_name").text(d.label);
+    d3.select("#difference").text(diffVal);
+    d3.select("#num_left").text(lVal);
+    d3.select("#num_right").text(rVal);
+    // shows the inforbox
+    d3.select("#infobox").style("display", "block");
+  } 
+  //hides the box again 
+  function removeBox() 
+  { 
+      d3.select("#infobox").style("display", "none"); 
+  } 
 }
