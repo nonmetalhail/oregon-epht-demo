@@ -18,17 +18,23 @@
       </nav>
     </header>
     <section>
-      <div id="title">hospital</div>
-      <select id = "disease_sets">
-        <option value = "asthma">Asthma</option>
-        <option value = "cancer">Cancer</option>
-        <!-- <option value = "co">Carbon Monoxide Poisoning</option> -->
-        <option value = "heart_attack">Heart Attack</option>
-        <option value = "reproductive">Reproductive Outcomes</option>
-      </select>
-      <select id = "data_sets">
+      <div>
+        <div id="title">hospital</div>
+        <div style="float:right">
+          <a id="explore" href="" target="blank">Explore this dataset</a>
+        </div>
+      </div>
+        <select id = "disease_sets">
+          <option value = "asthma">Asthma</option>
+          <option value = "cancer">Cancer</option>
+          <!-- <option value = "co">Carbon Monoxide Poisoning</option> -->
+          <option value = "heart_attack">Heart Attack</option>
+          <option value = "reproductive">Reproductive Outcomes</option>
+        </select>
+        <select id = "data_sets">
 
-      </select>
+        </select>
+
       <div id = "wrapper">
         <iframe id = "map" class = "chart" src="" frameborder="0"></iframe>
         <iframe id = 'graph' class = "chart" src="" frameborder="0"  scrolling="no"></iframe>

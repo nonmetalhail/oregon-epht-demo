@@ -190,6 +190,7 @@ $(document).ready(function(){
     $('#graph').attr('src',chartConfig(data_sets[disease][dataset]['tid'],'2006'));
     $('#table').attr('src',data_sets[disease][dataset]['table']);
     $('#title').text(data_sets[disease][dataset]['title']);
+    $('#explore').attr('href','https://www.google.com/fusiontables/data?docid='+data_sets[disease][dataset]['tid']);
   });
 
   $('#disease_sets').trigger('change');
