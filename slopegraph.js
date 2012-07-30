@@ -38,23 +38,38 @@
 var ft_datasets = {
   'asthma':{
     'title': 'Asthma',
+    'subtitle':'total',
     'tid': '1AzMRV-2WSSNeLOalrKdX0sEKry3oIxwTwNnJAwA'
   },
-  'male':{
+  'asthma male':{
     'title': 'Asthma',
+    'subtitle':'male',
     'tid': '1Z_oTv84uXB8pUg66wKszkndWMwtDK1CbmB3UGIA'
   },
-  'female':{
+  'asthma female':{
     'title': 'Asthma',
+    'subtitle':'female',
     'tid': '1IabRRnJ2CspLTwLruJz8or6QjhGb6NEVvXy8JqQ'
   },
   'cancer':{
     'title': 'Cancer',
+    'subtitle':'total',
     'tid': '1glNdT_IDaWxjw4Fv2SZgsi64_-2Yb7cdhnMfdSs'
   },
   'heart attack':{
     'title': 'Heart Attack',
+    'subtitle':'total',
     'tid': '1Mwr9Fh2b_7kpjYXtxilXXxG8-juVB77yFoxSrqU'
+  },
+  'heart attack male':{
+    'title': 'Heart Attack',
+    'subtitle':'male',
+    'tid': '1Nfy2UQf-6UyigUsqODE08rld-nc2fgiWTvpmA2M'
+  },
+  'heart attack female':{
+    'title': 'Heart Attack',
+    'subtitle':'female',
+    'tid': '1bQYDsuGW-8igHMww5aqIbw-MNO79wQEBaTgCS6U'
   }
 }
 
@@ -83,6 +98,7 @@ $(document).ready(function(){
   DataSet.prototype.year = '';
   DataSet.prototype.tid = '';
   DataSet.prototype.title = '';
+  DataSet.prototype.subtitle = '';
 
   DataSet.prototype.set_set = function(set){
     this.set = set;
@@ -95,6 +111,9 @@ $(document).ready(function(){
   };
   DataSet.prototype.set_title = function(title){
     this.title = title;
+  };
+  DataSet.prototype.set_subtitle = function(subtitle){
+    this.subtitle = subtitle;
   };
 
   epht.data1 = new DataSet();
@@ -116,14 +135,30 @@ $(document).ready(function(){
   epht.data1.set_title(ft_datasets[epht.data1.set]['title']);
   epht.data2.set_title(ft_datasets[epht.data2.set]['title']);
 
-  //name: the grey title text for each side
-  
+  //subtitles for calc grey side title
+  epht.data1.set_subtitle(ft_datasets[epht.data1.set]['subtitle']);
+  epht.data2.set_subtitle(ft_datasets[epht.data2.set]['subtitle']);
+
+  //name: the grey title text for each side  
   DataSet.prototype.set_name = function(){
+    // if they are the same set, then the person will compare years
+    // so use years as names
     if(epht.data1.set == epht.data2.set){
-      this.name = this.year;
+      epht.data1.name = epht.data1.year;
+      epht.data2.name = epht.data2.year;
     }
+    // if they are different sets
     else{
-      this.name = this.set;
+      // are they male-female or comparison to avg comparison?
+      if(epht.data1.title == epht.data2.title){
+        epht.data1.name = epht.data1.subtitle;
+        epht.data2.name = epht.data2.subtitle;
+      }
+      // or comparison for different diseases
+      else{
+        epht.data1.name = epht.data1.set;
+        epht.data2.name = epht.data2.set;
+      }
     }
   };
   epht.data1.set_name();
@@ -140,6 +175,7 @@ $(document).ready(function(){
     });
 
   DataSet.prototype.update_data = function(){
+    console.log(epht.data1.name)
     $.when(getFTData(this))
       .done(function(){
         g.updateVis(epht.data1.name,epht.data2.name,
@@ -150,6 +186,7 @@ $(document).ready(function(){
   $('#data_set1').live('change',function(){
     epht.data1.set_set(this.value);
     epht.data1.set_title(ft_datasets[epht.data1.set]['title']);
+    epht.data1.set_subtitle(ft_datasets[epht.data1.set]['subtitle']);
     epht.data1.set_tid(ft_datasets[epht.data1.set]['tid']);
     epht.data1.set_name();
     
@@ -159,6 +196,7 @@ $(document).ready(function(){
   $('#data_set2').live('change',function(){
     epht.data2.set_set(this.value);
     epht.data2.set_title(ft_datasets[epht.data2.set]['title']);
+    epht.data2.set_subtitle(ft_datasets[epht.data2.set]['subtitle']);
     epht.data2.set_tid(ft_datasets[epht.data2.set]['tid']);
     epht.data2.set_name();
 
