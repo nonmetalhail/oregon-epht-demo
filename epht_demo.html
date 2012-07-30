@@ -11,25 +11,26 @@
   <body>
     <header>
       <nav>
-        <a href="">Oregon Demo</a>
+        <a href="http://oregon-epht-demo.googlecode.com/svn/trunk/epht_demo.html">Oregon Demo</a>
         <a href="">User Demo</a>
-        <a href="">Power User Demo</a>
+        <a href="http://oregon-epht-demo.googlecode.com/svn/trunk/slopegraph.html">Power User Demo</a>
       </nav>
     </header>
     <section>
       <select id = "disease_sets">
         <option value = "asthma">Asthma</option>
         <option value = "cancer">Cancer</option>
-        <option value = "co">Carbon Monoxide Poisoning</option>
+        <!-- <option value = "co">Carbon Monoxide Poisoning</option> -->
         <option value = "heart_attack">Heart Attack</option>
         <option value = "reproductive">Reproductive Outcomes</option>
       </select>
       <select id = "data_sets">
 
       </select>
+      <div id="title">hospital</div>
       <div id = "wrapper">
         <iframe id = "map" class = "chart" src="" frameborder="0"></iframe>
-        <iframe id = 'graph' class = "chart" src="" frameborder="0"></iframe>
+        <iframe id = 'graph' class = "chart" src="" frameborder="0"  scrolling="no"></iframe>
       </div>
       <iframe id = 'table' src="" frameborder="0"></iframe>
     </section>
