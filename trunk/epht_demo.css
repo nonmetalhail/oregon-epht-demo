@@ -49,6 +49,15 @@ a:hover{
   background: #fff;
 }
 
+.user_chart { 
+  width:100%; 
+  height:800px;
+  scrolling:no; 
+  frameBorder:0;
+  border: solid 4px white;
+  background: #fff;
+}
+
 #map{
   float:left;
 }
