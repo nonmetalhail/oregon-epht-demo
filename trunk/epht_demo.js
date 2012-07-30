@@ -5,21 +5,24 @@ var data_sets = {
       'table': "https://www.google.com/fusiontables/embedviz?viz=GVIZ&t=TABLE&containerId=gviz_canvas&q=select+col8%3E%3E0%2C+col2%3E%3E0%2C+col3%3E%3E0%2C+col0%3E%3E0%2C+col1%3E%3E0%2C+col6%3E%3E0%2C+col7%3E%3E0%2C+col4%3E%3E0%2C+col5%3E%3E0+from+1h_iAYRtvRAsPZ1rCPDZbYwZgtkLZLcB0rT4Uu1Y",
       'map': 'https://www.google.com/fusiontables/embedviz?viz=MAP&q=select+col2%3E%3E1+from+1h_iAYRtvRAsPZ1rCPDZbYwZgtkLZLcB0rT4Uu1Y&h=false&lat=44.3&lng=-121.15&z=6&t=1&l=col2%3E%3E1&y=1&tmplt=-1',
       'chart': '',
-      'title':"Asthma Hospitalizations: Age-adjusted rate per 10,000 population"
+      'title':"Asthma Hospitalizations: Age-adjusted rate per 10,000 population",
+      'years':[2007,2006,2005,2004,2003,2002,2001,2000]
     },
     'Male': {
       'tid':'1jIbJ1cHw3xFw9rAFHz8kr1t82cjHe5mRNdRT5S8',
       'table': "https://www.google.com/fusiontables/embedviz?viz=GVIZ&t=TABLE&containerId=gviz_canvas&q=select+col8%3E%3E0%2C+col2%3E%3E0%2C+col3%3E%3E0%2C+col0%3E%3E0%2C+col1%3E%3E0%2C+col6%3E%3E0%2C+col7%3E%3E0%2C+col4%3E%3E0%2C+col5%3E%3E0+from+1jIbJ1cHw3xFw9rAFHz8kr1t82cjHe5mRNdRT5S8",
       'map': 'https://www.google.com/fusiontables/embedviz?viz=MAP&q=select+col2%3E%3E1+from+1jIbJ1cHw3xFw9rAFHz8kr1t82cjHe5mRNdRT5S8&h=false&lat=44.3&lng=-121.15&z=6&t=1&l=col2%3E%3E1&y=1&tmplt=-1',
       'chart': '',
-      'title':'Male Asthma Hospitalizations: Age-adjusted rate per 10,000 population'
+      'title':'Male Asthma Hospitalizations: Age-adjusted rate per 10,000 population',
+      'years':[2007,2006,2005,2004,2003,2002,2001,2000]
     },
     'Female': {
       'tid':'1YO3p1kAIUTLxf6KNZDj5jIRHTLvrL12K6UDqF5Y',
       'table': 'https://www.google.com/fusiontables/embedviz?viz=GVIZ&t=TABLE&containerId=gviz_canvas&q=select+col8%3E%3E0%2C+col2%3E%3E0%2C+col3%3E%3E0%2C+col0%3E%3E0%2C+col1%3E%3E0%2C+col6%3E%3E0%2C+col7%3E%3E0%2C+col4%3E%3E0%2C+col5%3E%3E0+from+1YO3p1kAIUTLxf6KNZDj5jIRHTLvrL12K6UDqF5Y',
       'map': 'https://www.google.com/fusiontables/embedviz?viz=MAP&q=select+col2%3E%3E1+from+1YO3p1kAIUTLxf6KNZDj5jIRHTLvrL12K6UDqF5Y&h=false&lat=44.3&lng=-121.15&z=6&t=1&l=col2%3E%3E1&y=5&tmplt=-1',
       'chart': "",
-      'title':"Female Asthma Hospitalizations: Age-adjusted rate per 10,000 population"
+      'title':"Female Asthma Hospitalizations: Age-adjusted rate per 10,000 population",
+      'years':[2007,2006,2005,2004,2003,2002,2001,2000]
     }
   },
   'cancer':{
@@ -28,98 +31,112 @@ var data_sets = {
       'table': 'https://www.google.com/fusiontables/embedviz?viz=GVIZ&t=TABLE&containerId=gviz_canvas&q=select+col11%3E%3E0%2C+col1%3E%3E0%2C+col0%3E%3E0%2C+col3%3E%3E0%2C+col2%3E%3E0%2C+col6%3E%3E0%2C+col7%3E%3E0%2C+col4%3E%3E0%2C+col5%3E%3E0%2C+col9%3E%3E0%2C+col10%3E%3E0%2C+col8%3E%3E0+from+1D1UeB774ABrcOxPaOTz4imVHKv94ABGAMFQFdWg',
       'map': 'https://www.google.com/fusiontables/embedviz?viz=MAP&q=select+col2%3E%3E1+from+1D1UeB774ABrcOxPaOTz4imVHKv94ABGAMFQFdWg&h=false&lat=44.3&lng=-121.15&z=6&t=1&l=col2%3E%3E1&y=3&tmplt=-1',
       'chart': '' ,
-      'title':'Cancer (all age groups): Age-adjusted rate per 100,000 population'
+      'title':'Cancer (all age groups): Age-adjusted rate per 100,000 population',
+      'years':[2006,2005,2004,2003,2002,2001,2000,1999,1998,1997,1996]
     },
     'Bladder':{
       'tid':'',
       'table': '',
       'map': '',
       'chart': '',
-      'title':'Baldder Cancer (all age groups): Age-adjusted rate per 100,000 population'
+      'title':'Baldder Cancer (all age groups): Age-adjusted rate per 100,000 population',
+      'years':[2006,2005,2004,2003,2002,2001,2000,1999,1998,1997,1996]
     },
     'Brain & CNS':{
       'tid':'',
       'table': '',
       'map': '',
       'chart': '',
-      'title':'Brain & CNS Cancer (all age groups): Age-adjusted rate per 100,000 population'
+      'title':'Brain & CNS Cancer (all age groups): Age-adjusted rate per 100,000 population',
+      'years':[2006,2005,2004,2003,2002,2001,2000,1999,1998,1997,1996]
     },
     'Breast':{
       'tid':'',
       'table': '',
       'map': '',
       'chart': '',
-      'title':'Breast Cancer (all age groups): Age-adjusted rate per 100,000 population'
+      'title':'Breast Cancer (all age groups): Age-adjusted rate per 100,000 population',
+      'years':[2006,2005,2004,2003,2002,2001,2000,1999,1998,1997,1996]
     },
     'Breast < 50yr':{
       'tid':'',
       'table': '',
       'map': '',
       'chart': '',
-      'title':'Breast Cancer (under 50 years old): Age-adjusted rate per 100,000 population'
+      'title':'Breast Cancer (under 50 years old): Age-adjusted rate per 100,000 population',
+      'years':[2006,2005,2004,2003,2002,2001,2000,1999,1998,1997,1996]
     },
     'Breast >=50yr':{
       'tid':'',
       'table': '',
       'map': '',
       'chart': '',
-      'title':'Breast Cancer (50 years old and older): Age-adjusted rate per 100,000 population'
+      'title':'Breast Cancer (50 years old and older): Age-adjusted rate per 100,000 population',
+      'years':[2006,2005,2004,2003,2002,2001,2000,1999,1998,1997,1996]
     },
     'Leukemia':{
       'tid':'',
       'table': '',
       'map': '',
       'chart': '',
-      'title':'Leukemia Cancer (all age groups): Age-adjusted rate per 100,000 population'
+      'title':'Leukemia Cancer (all age groups): Age-adjusted rate per 100,000 population',
+      'years':[2006,2005,2004,2003,2002,2001,2000,1999,1998,1997,1996]
     },
     'Leukemia-Lymphocytic':{
       'tid':'',
       'table': '',
       'map': '',
       'chart': '',
-      'title':'Leukemia-Lymphocytic Cancer (all age groups): Age-adjusted rate per 100,000 population'
+      'title':'Leukemia-Lymphocytic Cancer (all age groups): Age-adjusted rate per 100,000 population',
+      'years':[2006,2005,2004,2003,2002,2001,2000,1999,1998,1997,1996]
     },
     'Leukemia-Myeloid':{
       'tid':'',
       'table': '',
       'map': '',
       'chart': '',
-      'title':'Leukemia-Myeloid Cancer (all age groups): Age-adjusted rate per 100,000 population'
+      'title':'Leukemia-Myeloid Cancer (all age groups): Age-adjusted rate per 100,000 population',
+      'years':[2006,2005,2004,2003,2002,2001,2000,1999,1998,1997,1996]
     },
     'Lung & Bronchus':{
       'tid':'',
       'table': '',
       'map': '',
       'chart': '',
-      'title':'Lung & Bronchus Cancer (all age groups): Age-adjusted rate per 100,000 population'
+      'title':'Lung & Bronchus Cancer (all age groups): Age-adjusted rate per 100,000 population',
+      'years':[2006,2005,2004,2003,2002,2001,2000,1999,1998,1997,1996]
     },
     'Melanoma':{
       'tid':'',
       'table': '',
       'map': '',
       'chart': '',
-      'title':'Melanoma Cancer (all age groups): Age-adjusted rate per 100,000 population'
+      'title':'Melanoma Cancer (all age groups): Age-adjusted rate per 100,000 population',
+      'years':[2006,2005,2004,2003,2002,2001,2000,1999,1998,1997,1996]
     },
     'Mesotheloma':{
       'tid':'',
       'table': '',
       'map': '',
       'chart': '',
-      'title':'Mesotheloma Cancer (all age groups): Age-adjusted rate per 100,000 population'
+      'title':'Mesotheloma Cancer (all age groups): Age-adjusted rate per 100,000 population',
+      'years':[2006,2005,2004,2003,2002,2001,2000,1999,1998,1997,1996]
     },
     "Non-Hodgkin's Lymphoma":{
       'tid':'',
       'table': '',
       'map': '',
       'chart': '',
-      'title':"Non-Hodgkin's Lymphoma Cancer (all age groups): Age-adjusted rate per 100,000 population"
+      'title':"Non-Hodgkin's Lymphoma Cancer (all age groups): Age-adjusted rate per 100,000 population",
+      'years':[2006,2005,2004,2003,2002,2001,2000,1999,1998,1997,1996]
     },
     'Thyroid':{
       'tid':'',
       'table': '',
       'map': '',
       'chart': '',
-      'title':'Thyroid Cancer (all age groups): Age-adjusted rate per 100,000 population'
+      'title':'Thyroid Cancer (all age groups): Age-adjusted rate per 100,000 population',
+      'years':[2006,2005,2004,2003,2002,2001,2000,1999,1998,1997,1996]
     }
   },
   'co':{
@@ -136,21 +153,24 @@ var data_sets = {
       'table': 'https://www.google.com/fusiontables/embedviz?viz=GVIZ&t=TABLE&containerId=gviz_canvas&q=select+col8%3E%3E0%2C+col2%3E%3E0%2C+col3%3E%3E0%2C+col0%3E%3E0%2C+col1%3E%3E0%2C+col4%3E%3E0%2C+col5%3E%3E0%2C+col6%3E%3E0%2C+col7%3E%3E0+from+11UAHYoHQ1GYEkSDz8E6Rt406TqN6-AbK-bJdFXs',
       'map': 'https://www.google.com/fusiontables/embedviz?viz=MAP&q=select+col2%3E%3E1+from+11UAHYoHQ1GYEkSDz8E6Rt406TqN6-AbK-bJdFXs&h=false&lat=44.3&lng=-121.15&z=6&t=1&l=col2%3E%3E1&y=2&tmplt=-1',
       'chart': '',
-      'title':"Heart Attack Hospitalizations: Age-adjusted rate among persons 35 and over per 10,000 population"
+      'title':"Heart Attack Hospitalizations: Age-adjusted rate among persons 35 and over per 10,000 population",
+      'years':[2007,2006,2005,2004,2003,2002,2001,2000]
     },
     'male':{
       'tid':'1Nfy2UQf-6UyigUsqODE08rld-nc2fgiWTvpmA2M',
       'table':'https://www.google.com/fusiontables/embedviz?viz=GVIZ&t=TABLE&containerId=gviz_canvas&q=select+col0%3E%3E0%2C+col3%3E%3E0%2C+col4%3E%3E0%2C+col1%3E%3E0%2C+col2%3E%3E0%2C+col7%3E%3E0%2C+col8%3E%3E0%2C+col5%3E%3E0%2C+col6%3E%3E0+from+1Nfy2UQf-6UyigUsqODE08rld-nc2fgiWTvpmA2M',
       'map': 'https://www.google.com/fusiontables/embedviz?viz=MAP&q=select+col2%3E%3E1+from+1Nfy2UQf-6UyigUsqODE08rld-nc2fgiWTvpmA2M&h=false&lat=44.3&lng=-121.15&z=6&t=1&l=col2%3E%3E1&y=3&tmplt=-1',
       'chart': '',
-      'title':"Male Heart Attack Hospitalizations: Age-adjusted rate among persons 35 and over per 10,000 population"
+      'title':"Male Heart Attack Hospitalizations: Age-adjusted rate among persons 35 and over per 10,000 population",
+      'years':[2007,2006,2005,2004,2003,2002,2001,2000]
     },
     'female':{
       'tid':'1bQYDsuGW-8igHMww5aqIbw-MNO79wQEBaTgCS6U',
       'table': 'https://www.google.com/fusiontables/embedviz?viz=GVIZ&t=TABLE&containerId=gviz_canvas&q=select+col0%3E%3E0%2C+col3%3E%3E0%2C+col4%3E%3E0%2C+col1%3E%3E0%2C+col2%3E%3E0%2C+col7%3E%3E0%2C+col8%3E%3E0%2C+col5%3E%3E0%2C+col6%3E%3E0+from+1bQYDsuGW-8igHMww5aqIbw-MNO79wQEBaTgCS6U+order+by+col0%3E%3E0+asc',
       'map': 'https://www.google.com/fusiontables/embedviz?viz=MAP&q=select+col2%3E%3E1+from+1bQYDsuGW-8igHMww5aqIbw-MNO79wQEBaTgCS6U&h=false&lat=44.3&lng=-121.15&z=6&t=1&l=col2%3E%3E1&y=2&tmplt=-1',
       'chart': '',
-      'title':"Female Heart Attack Hospitalizations: Age-adjusted rate among persons 35 and over per 10,000 population"
+      'title':"Female Heart Attack Hospitalizations: Age-adjusted rate among persons 35 and over per 10,000 population",
+      'years':[2007,2006,2005,2004,2003,2002,2001,2000]
     }
 
   },
@@ -160,7 +180,8 @@ var data_sets = {
       'table': 'https://www.google.com/fusiontables/embedviz?viz=GVIZ&t=TABLE&containerId=gviz_canvas&q=select+col11%3E%3E0%2C+col0%3E%3E0%2C+col2%3E%3E0%2C+col1%3E%3E0%2C+col5%3E%3E0%2C+col6%3E%3E0%2C+col3%3E%3E0%2C+col4%3E%3E0%2C+col9%3E%3E0%2C+col10%3E%3E0%2C+col7%3E%3E0%2C+col8%3E%3E0+from+11dJqjaryGor6ErfoDTg4DTJgs42dfZVH-GeF_u4',
       'map': 'https://www.google.com/fusiontables/embedviz?viz=MAP&q=select+col2%3E%3E1+from+11dJqjaryGor6ErfoDTg4DTJgs42dfZVH-GeF_u4&h=false&lat=44.3&lng=-121.15&z=6&t=1&l=col2%3E%3E1&y=2&tmplt=-1',
       'chart': '',
-      'title':"Total fertility rate per 1,000 women of reproductive age"
+      'title':"Total fertility rate per 1,000 women of reproductive age",
+      'years':[2007,2006,2005,2004,2003,2002,2001,2000,1999,1998,1997]
     }
   }
 };
@@ -177,21 +198,40 @@ $(document).ready(function(){
       $('#data_sets').append('<option value = "'+
         item+'">'+item+'</option>');
     }
-    $('#data_sets option[value="All"]').trigger('change');
+    // $('#data_sets option[value="All"]').trigger('change');
+    
+    var tempYears = data_sets[this.value][$('#data_sets').attr('value')]['years'];
+    $('#years').children().remove();
+    for(var i in tempYears){
+      $('#years').append('<option value = "'+
+        tempYears[i]+'">'+tempYears[i]+'</option>');
+    }
+    $('#years option[value="2006"]').trigger('change');
   });
 
   $('#data_sets').live('change',function(){
-    var disease = $('#disease_sets option:selected').attr('value');
-    var dataset = this.value;
-    console.log(disease);
-    console.log(dataset);
-    console.log(data_sets[disease][dataset]);
-    $('#map').attr('src',data_sets[disease][dataset]['map']);
-    $('#graph').attr('src',chartConfig(data_sets[disease][dataset]['tid'],'2006'));
-    $('#table').attr('src',data_sets[disease][dataset]['table']);
-    $('#title').text(data_sets[disease][dataset]['title']);
-    $('#explore').attr('href','https://www.google.com/fusiontables/data?docid='+data_sets[disease][dataset]['tid']);
+    updateCharts();
+  });
+
+  $('#years').live('change',function(){
+    updateCharts();
   });
 
   $('#disease_sets').trigger('change');
 });
+
+function updateCharts(){
+  var disease = $('#disease_sets option:selected').attr('value');
+  var dataset = $('#data_sets option:selected').attr('value');
+  var year = $('#years option:selected').attr('value');
+
+  var data = data_sets[disease][dataset];
+  console.log(disease);
+  console.log(dataset);
+  console.log(data);
+  $('#map').attr('src',data['map']);
+  $('#graph').attr('src',chartConfig(data['tid'],year));
+  $('#table').attr('src',data['table']);
+  $('#title').text(data['title']);
+  $('#explore').attr('href','https://www.google.com/fusiontables/data?docid='+data['tid']);
+}
