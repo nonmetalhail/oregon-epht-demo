@@ -72,6 +72,13 @@ a:hover{
   margin: 8px 5px;
 }
 
+.wrapper{
+  width:100%;
+  height:500px;
+  clear:both;
+  display:block;
+  min-height:300px;
+}
 
 .user_chart { 
   width:100%; 
@@ -81,20 +88,16 @@ a:hover{
   border: solid 4px white;
   background: #fff;
   margin-top: 10px;
-  display:inline;
 }
 
 .user_writeup{
   width: 28%;
   float:left;
-  display:inline;
   font: 14px Verdana, arial,sans-serif;
-  
 }
 
 .user_img{
   width: 70%;
   float:right;
-  display:inline;
   margin-bottom:10px;
 }
