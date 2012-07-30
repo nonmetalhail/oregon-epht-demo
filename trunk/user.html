@@ -31,13 +31,22 @@
           </div>
           <img class = "user_img" src="img/epht_f.png"/>
         </div>
-        <div >
+        <div class="wrapper">
           <div class = "user_writeup">
-            <p>The user now is viewing the data in Fusion Tables where they are free to fully interact with the data, but not make any changes to the original</p>
+            <p>The user now is viewing the data in Fusion Tables where they are free to fully interact with the data, but not make any changes to the original data. The data owner's maps and charts are available to the user, as are filters and the ability to merge the table with other datasets</p>
 
-            <p>As they explore, they might want to explore the data in more depth and compare some of the datasets they are viewing. For example, the user might notice that there are datasets for Asthma broken down by gender. They might be curious to know how Asthma rates vary county to county.</p>
+            <p>Since this user was interested in comparing Male and Female Asthma rates, they can create a merged table joining these two datasets. </p>
           </div>
           <img class = "user_img" src="img/epht_ft.png"/>
+        </div>
+        <div class="wrapper">
+          <div class = "user_writeup">
+            <p>Creating a merged table allows the user to explore data on their own and gain a more full understanding of the whole story around that data. </p>
+            <p>Merging tables also has the added benefit of maintaining the source attribution, so the new table cites the original. Also, changes to the original by the owner are reflected in the merged tables users created. So if the owner wants to update the data with a new year's worth of statistics or an error was found in the data, the owner of the original table can update the table, and those changes get pushed out to the users.</p>
+
+            <p>Now that the user has a merge of Male and Female Asthma rates by County in Oregon, they can explore the data through visualization, much like on the original website. An example bar graph is below, demonstrating how the user now has the ability to compare Male and Female Asthma rates with minimal effort and no downloading of data to their own computer.</p>
+          </div>
+          <img class = "user_img" src="img/merged.png"/>
         </div>
         <iframe class = "user_chart" src="https://www.google.com/fusiontables/embedviz?&containerId=gviz_canvas&viz=GVIZ&q=select%20'Geography'%2C%20'col5%3E%3E0'%2C%20'col5%3E%3E2'%20from%201tqNc57DPVWzYoPkSitQIPxDy1KuqmHAWULazn7Q%20order%20by%20'Geography'%20limit%20100&t=BAR&gco_width=1040&gco_height=800&gco_chartArea=%7B%22height%22%3A%22800%22%2C%22top%22%3A%2250%22%2C%22left%22%3A%22100%22%7D&gco_hAxis=%7B%22viewWindowMode%22%3A%22pretty%22%2C%22viewWindow%22%3A%7B%7D%2C%22useFormatFromData%22%3Atrue%2C%22format%22%3A%22%22%7D&gco_vAxis=%7B%22format%22%3A%22%22%7D&gco_vAxes=%5B%7B%22title%22%3Anull%2C%22minValue%22%3Anull%2C%22maxValue%22%3Anull%2C%22viewWindowMode%22%3A%22pretty%22%2C%22viewWindow%22%3A%7B%22max%22%3Anull%2C%22min%22%3Anull%7D%2C%22useFormatFromData%22%3Atrue%2C%22textStyle%22%3A%7B%22color%22%3A%22%23222%22%2C%22fontSize%22%3A%2208%22%7D%7D%2C%7B%22viewWindowMode%22%3A%22pretty%22%2C%22viewWindow%22%3A%7B%7D%2C%22useFormatFromData%22%3Atrue%7D%5D&gco_curveType=&gco_animation=%7B%22duration%22%3A500%7D&gco_booleanRole=certainty&gco_lineWidth=2&gco_series=%7B%220%22%3A%7B%22hasAnnotations%22%3Atrue%7D%7D&gco_title=Comparison%20of%20Male%20(Blue)%20and%20Female%20(Red)%20Asthma%20Rates&gco_legend=none&gco_strictFirstColumnType=false" frameborder="0"  scrolling="no"></iframe>
       </div>
