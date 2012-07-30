@@ -137,7 +137,22 @@ var data_sets = {
       'map': 'https://www.google.com/fusiontables/embedviz?viz=MAP&q=select+col2%3E%3E1+from+11UAHYoHQ1GYEkSDz8E6Rt406TqN6-AbK-bJdFXs&h=false&lat=44.3&lng=-121.15&z=6&t=1&l=col2%3E%3E1&y=2&tmplt=-1',
       'chart': '',
       'title':"Heart Attack Hospitalizations: Age-adjusted rate among persons 35 and over per 10,000 population"
+    },
+    'male':{
+      'tid':'1Nfy2UQf-6UyigUsqODE08rld-nc2fgiWTvpmA2M',
+      'table':'https://www.google.com/fusiontables/embedviz?viz=GVIZ&t=TABLE&containerId=gviz_canvas&q=select+col0%3E%3E0%2C+col3%3E%3E0%2C+col4%3E%3E0%2C+col1%3E%3E0%2C+col2%3E%3E0%2C+col7%3E%3E0%2C+col8%3E%3E0%2C+col5%3E%3E0%2C+col6%3E%3E0+from+1Nfy2UQf-6UyigUsqODE08rld-nc2fgiWTvpmA2M',
+      'map': 'https://www.google.com/fusiontables/embedviz?viz=MAP&q=select+col2%3E%3E1+from+1Nfy2UQf-6UyigUsqODE08rld-nc2fgiWTvpmA2M&h=false&lat=44.3&lng=-121.15&z=6&t=1&l=col2%3E%3E1&y=3&tmplt=-1',
+      'chart': '',
+      'title':"Male Heart Attack Hospitalizations: Age-adjusted rate among persons 35 and over per 10,000 population"
+    },
+    'female':{
+      'tid':'1bQYDsuGW-8igHMww5aqIbw-MNO79wQEBaTgCS6U',
+      'table': 'https://www.google.com/fusiontables/embedviz?viz=GVIZ&t=TABLE&containerId=gviz_canvas&q=select+col0%3E%3E0%2C+col3%3E%3E0%2C+col4%3E%3E0%2C+col1%3E%3E0%2C+col2%3E%3E0%2C+col7%3E%3E0%2C+col8%3E%3E0%2C+col5%3E%3E0%2C+col6%3E%3E0+from+1bQYDsuGW-8igHMww5aqIbw-MNO79wQEBaTgCS6U+order+by+col0%3E%3E0+asc',
+      'map': 'https://www.google.com/fusiontables/embedviz?viz=MAP&q=select+col2%3E%3E1+from+1bQYDsuGW-8igHMww5aqIbw-MNO79wQEBaTgCS6U&h=false&lat=44.3&lng=-121.15&z=6&t=1&l=col2%3E%3E1&y=2&tmplt=-1',
+      'chart': '',
+      'title':"Female Heart Attack Hospitalizations: Age-adjusted rate among persons 35 and over per 10,000 population"
     }
+
   },
   'reproductive':{
     'All':{
