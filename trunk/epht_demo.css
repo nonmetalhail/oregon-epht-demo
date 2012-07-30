@@ -65,5 +65,11 @@ a:hover{
   frameborder:0;
   border: solid 1px lightgrey;
   background: #fff;
+  margin-top:10px;
+}
+
+#title{
+  font: bold 16px arial,sans-serif ;
+  margin: 8px 5px;
 }
 
