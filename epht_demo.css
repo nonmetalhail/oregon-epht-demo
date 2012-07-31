@@ -59,7 +59,7 @@ a:hover{
 
 #table{
   width: 100%;
-  height: 850px;
+  min-height: 810px;
   scrolling:auto; 
   frameborder:0;
   border: solid 1px lightgrey;
