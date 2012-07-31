@@ -32,6 +32,7 @@
  *
  */
 
+
 // fusion table table id and a title which should match the html select values
 // in a better world, i would automate populating the selects with these values
 // the year values could be populated by calling a DESCRIBE on the table, etc
