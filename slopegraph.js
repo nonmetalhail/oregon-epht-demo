@@ -32,7 +32,6 @@
  *
  */
 
-
 // fusion table table id and a title which should match the html select values
 // in a better world, i would automate populating the selects with these values
 // the year values could be populated by calling a DESCRIBE on the table, etc
@@ -86,37 +85,37 @@ var BOTTOM_MARGIN = 50;
 
 var ELIGIBLE_SIZE = HEIGHT - TOP_MARGIN - BOTTOM_MARGIN;
 
+// create var for vis and data
 var g = new slopeGraphBuilder();
 var epht = {};
 
-$(document).ready(function(){
-  var DataSet = function (){
-    this.data = {}
-  };
+var DataSet = function (){
+  this.data = {};
+  this.name = '';
+  this.set = '';
+  this.year = '';
+  this.tid = '';
+  this.title = '';
+  this.subtitle = '';
 
-  DataSet.prototype.name = '';
-  DataSet.prototype.set = '';
-  DataSet.prototype.year = '';
-  DataSet.prototype.tid = '';
-  DataSet.prototype.title = '';
-  DataSet.prototype.subtitle = '';
-
-  DataSet.prototype.set_set = function(set){
+  this.set_set = function(set){
     this.set = set;
   };
-  DataSet.prototype.set_year = function(year){
+  this.set_year = function(year){
     this.year = year;
   };
-  DataSet.prototype.set_tid = function(tid){
+  this.set_tid = function(tid){
     this.tid = tid;
   };
-  DataSet.prototype.set_title = function(title){
+  this.set_title = function(title){
     this.title = title;
   };
-  DataSet.prototype.set_subtitle = function(subtitle){
+  this.set_subtitle = function(subtitle){
     this.subtitle = subtitle;
   };
+};
 
+$(document).ready(function(){
   epht.data1 = new DataSet();
   epht.data2 = new DataSet();
 
@@ -124,18 +123,14 @@ $(document).ready(function(){
   epht.data1.set_set($('#data_set1 option:selected').attr('value'));
   epht.data2.set_set($('#data_set2 option:selected').attr('value'));
   // table
-  // epht.data1.set_tid('1tzCz8LpvWJU_73zfNnUGOC7Z1MveXTsyQajqdKo');
-  // epht.data2.set_tid('1DM18V3sby3TPRp6WQF889D4aRnoVUCy7QbKEO1o');
   epht.data1.set_tid(ft_datasets[epht.data1.set]['tid']);
   epht.data2.set_tid(ft_datasets[epht.data2.set]['tid']);
   //year
   epht.data1.set_year($('#year1 option:selected').attr('value'));
   epht.data2.set_year($('#year2 option:selected').attr('value'));
-
   //Black centered title
   epht.data1.set_title(ft_datasets[epht.data1.set]['title']);
   epht.data2.set_title(ft_datasets[epht.data2.set]['title']);
-
   //subtitles for calc grey side title
   epht.data1.set_subtitle(ft_datasets[epht.data1.set]['subtitle']);
   epht.data2.set_subtitle(ft_datasets[epht.data2.set]['subtitle']);
@@ -165,25 +160,31 @@ $(document).ready(function(){
   epht.data1.set_name();
   epht.data2.set_name();
 
-  // functions with arguments in the done get called immediately; 
-  // would have to do: .done(g.createVis) and restructure so 
-  // data1 and data2 are the returns of the when fucntions
-  // wrapping in anon function allieviates this, though looks funky
+  /*
+  functions with arguments in the done get called immediately; 
+  so we would have to have: .done(g.createVis) and restructure 
+  everything so no vars are passed which would be fairly easy, but 
+  require more restucturing of the slopegraph code. 
+  
+  Wrapping createVis in an anon function allieviates this, 
+  though looks funky
+  */
+
+  // when we get both datasets back from FT, create the vis
   $.when(getFTData(epht.data1),getFTData(epht.data2))
     .done(function(){
       g.createVis(epht.data1.name,epht.data2.name,
         epht.data1.data,epht.data2.data,epht.data1.title,epht.data2.title)
     });
-
+  // when we get a dataset back after a change, update the vis. 
   DataSet.prototype.update_data = function(){
-    console.log(epht.data1.name)
     $.when(getFTData(this))
       .done(function(){
         g.updateVis(epht.data1.name,epht.data2.name,
           epht.data1.data,epht.data2.data,epht.data1.title,epht.data2.title)
       });
   }
-
+  // create listeners to the selection menus
   $('#data_set1').live('change',function(){
     epht.data1.set_set(this.value);
     epht.data1.set_title(ft_datasets[epht.data1.set]['title']);
@@ -192,7 +193,6 @@ $(document).ready(function(){
     epht.data1.set_name();
     
     epht.data1.update_data();
-
   });
   $('#data_set2').live('change',function(){
     epht.data2.set_set(this.value);
@@ -235,6 +235,7 @@ function getFTData(obj){
   *   county2, x1,  x2
   */
   var query = "SELECT 'Geography','"+obj.year+"' FROM " + obj.tid;
+  
   var encodedQuery = encodeURIComponent(query);
   var tail = '&key=AIzaSyA7_yvmF6Aj0z9ctqiVVS5BI9cVIqx7F1w';
   console.log(url+encodedQuery+tail);
