@@ -76,7 +76,7 @@ function getYears(self){
       $('#years').append('<option value = "'+
         tempYears[i]+'">'+tempYears[i]+'</option>');
     }
-    $('#years option[value="'tempYears[0]'"]').trigger('change');
+    $('#years option[value="'+tempYears[0]+'"]').trigger('change');
   });
 }
 
