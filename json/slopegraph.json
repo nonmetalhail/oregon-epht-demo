@@ -1,0 +1,37 @@
+{
+  "asthma":{
+    "title": "Asthma",
+    "subtitle":"total",
+    "tid": "1AzMRV-2WSSNeLOalrKdX0sEKry3oIxwTwNnJAwA"
+  },
+  "asthma male":{
+    "title": "Asthma",
+    "subtitle":"male",
+    "tid": "1Z_oTv84uXB8pUg66wKszkndWMwtDK1CbmB3UGIA"
+  },
+  "asthma female":{
+    "title": "Asthma",
+    "subtitle":"female",
+    "tid": "1IabRRnJ2CspLTwLruJz8or6QjhGb6NEVvXy8JqQ"
+  },
+  "cancer":{
+    "title": "Cancer",
+    "subtitle":"total",
+    "tid": "1glNdT_IDaWxjw4Fv2SZgsi64_-2Yb7cdhnMfdSs"
+  },
+  "heart attack":{
+    "title": "Heart Attack",
+    "subtitle":"total",
+    "tid": "1Mwr9Fh2b_7kpjYXtxilXXxG8-juVB77yFoxSrqU"
+  },
+  "heart attack male":{
+    "title": "Heart Attack",
+    "subtitle":"male",
+    "tid": "1Nfy2UQf-6UyigUsqODE08rld-nc2fgiWTvpmA2M"
+  },
+  "heart attack female":{
+    "title": "Heart Attack",
+    "subtitle":"female",
+    "tid": "1bQYDsuGW-8igHMww5aqIbw-MNO79wQEBaTgCS6U"
+  }
+}
