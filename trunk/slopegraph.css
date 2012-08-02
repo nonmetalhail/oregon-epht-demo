@@ -63,7 +63,7 @@ h4{
 }
 
 line.Oregon{
-  stroke: #000cff;
+  stroke: #2569e1/*#000cff*/;
   stroke-width: 2;
 }
 
@@ -72,12 +72,12 @@ text.Oregon{
 }
 
 line.over{
-  stroke: #bb2629;
+  stroke: #dd4d39/*#bb2629*/;
   stroke-width: 2;
   opacity: 1;
 }
 
 text.over{
-  fill: #bb2629;
+  fill: #dd4d39/*#bb2629*/;
   opacity: 1;
 }

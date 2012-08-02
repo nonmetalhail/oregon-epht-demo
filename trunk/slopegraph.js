@@ -532,7 +532,10 @@ function slopeGraphBuilder(){
         .attr('x', LEFT_MARGIN-35)
         .attr('y', function(d,i){
           // recalculates coordinate
-          return y(d.left_coord)
+          // if the right and left are the same, return the same val
+          // without this, sometimes they turn out different
+          // would have to examine the collision detection to really fix
+          return (d.right==d.left)?y(d.right_coord):y(d.left_coord)
         })
         .attr('dy', '.35em')
         .attr('font-size', 10)
@@ -569,7 +572,7 @@ function slopeGraphBuilder(){
       .data(data).enter().append('svg:text')
         .attr('x', LEFT_MARGIN-10)
         .attr('y', function(d,i){
-          return y(d.left_coord)
+          return (d.right==d.left)?y(d.right_coord):y(d.left_coord)
         })
         .attr('dy', '.35em')
         .attr('font-size', 10)
@@ -652,12 +655,24 @@ function slopeGraphBuilder(){
         .attr('x1', LEFT_MARGIN)
         .attr('x2', WIDTH-RIGHT_MARGIN)
         .attr('y1', function(d,i){
-          return y(d.left_coord)
+          return (d.right==d.left)?y(d.right_coord):y(d.left_coord)
         })
         .attr('y2', function(d,i){
           return y(d.right_coord)
         })
-        .attr('stroke', '#777')
+        .attr('stroke', function(d){
+          return (d.left-d.right)>0 ? "#24a856":"#ffd427"
+        })
+        // all lines grey instead of colored by +/-
+        // .attr('stroke', '#777')
+        /* experimented with changing stroke based on difference
+           problem was outliers; would need to normalize somehow
+           unless the story is about the outliers...*/
+        // this is not copied to the update vis section
+        // .attr("stroke-width",function(d){
+        //   return Math.abs(d.left-d.right)/10+.5
+          // return Math.pow(Math.abs(d.left-d.right),2)/400+Math.abs(d.left-d.right)/20+.5
+        // })
         .attr("class",function(d){return d.label.replace(' ','_')})
         .on("mouseover", function(d){
           displayBox(d,true);
@@ -698,7 +713,7 @@ function slopeGraphBuilder(){
       .duration(300)
       .ease('quad')
       .attr('y', function(d,i){
-          return y(d.left_coord)
+          return (d.right==d.left)?y(d.right_coord):y(d.left_coord)
         })
       .attr("class",function(d){return d.label.replace(' ','_')});
 
@@ -709,7 +724,7 @@ function slopeGraphBuilder(){
       .duration(300)
       .ease('quad')
       .attr('y', function(d,i){
-          return y(d.left_coord)
+          return (d.right==d.left)?y(d.right_coord):y(d.left_coord)
         })
       .attr("class",function(d){return d.label.replace(' ','_')});
 
@@ -741,7 +756,7 @@ function slopeGraphBuilder(){
       .duration(300)
       .ease('quad')
       .attr('y1', function(d,i){
-        return y(d.left_coord)
+        return (d.right==d.left)?y(d.right_coord):y(d.left_coord)
       })
       .transition()
       .duration(300)
@@ -749,12 +764,18 @@ function slopeGraphBuilder(){
       .attr('y2', function(d,i){
         return y(d.right_coord)
       })
+      .attr('stroke', function(d){
+        return (d.left-d.right)>0 ? "#24a856":"#ffd427"
+      })
+      // all lines grey instead of colored by +/-
+      // .attr('stroke', '#777')
       .attr("class",function(d){return d.label.replace(' ','_')});
   }
 
   // fade vis by setting opacity to .5
   function fadeRest(){
     $('g').children().css('opacity',.3);
+
     $('.Oregon').css('opacity',1);
   }
   // unfade vis by setting opacity to 1
