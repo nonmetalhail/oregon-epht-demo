@@ -22,7 +22,7 @@ $(document).ready(function(){
       }
       // $('#data_sets option[value="All"]').trigger('change');
       
-      getYears();
+      getYears(this);
       
       var tempYears = data_sets[this.value][$('#data_sets').attr('value')]['years'];
       $('#years').children().remove();
@@ -56,9 +56,9 @@ function getFTLinks(){
   return d.promise();
 }
 
-function getYears(){
+function getYears(self){
   var FTURL = 'https://www.googleapis.com/fusiontables/v1/tables/';
-  var tid = data_sets[this.value][$('#data_sets').attr('value')]['tid'];
+  var tid = data_sets[self.value][$('#data_sets').attr('value')]['tid'];
   $.getJSON(FTURL+tid,function(resp){
     for(var i in resp['column']){
       if(resp['column'][i]["type"]=="NUMBER"){
