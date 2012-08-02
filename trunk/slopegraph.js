@@ -123,8 +123,8 @@ var DataSet = function (){
 
 $(document).ready(function(){
   $.when(getJsonFile()).done(function(){
-    console.log(data_sets)
-    for(var item in data_sets){
+    console.log(ft_datasets)
+    for(var item in ft_datasets){
       $('#data_set1').append('<option value = "'+
           item+'">'+toTitleCase(item)+'</option>');
       $('#data_set2').append('<option value = "'+
