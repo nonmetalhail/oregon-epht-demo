@@ -32,9 +32,13 @@
  *
  */
 
+var FT_API_KEY = 'AIzaSyA7_yvmF6Aj0z9ctqiVVS5BI9cVIqx7F1w'
 
 // location of the json datafile
 var json_file_location = 'json/slopegraph.json'
+var default_dataset_1 = 'asthma male'
+var default_dataset_2 = 'asthma female'
+
 /* 
   datastructure to hold the json response
   fusion table table id and a title which should match the html select values
@@ -131,6 +135,10 @@ $(document).ready(function(){
           item+'">'+toTitleCase(item)+'</option>');
     }
 
+    // hard code the two default options for a more interesting start
+    $('#data_set1 option[value="'+default_dataset_1+'"]').attr('selected', true);
+    $('#data_set2 option[value="'+default_dataset_2+'"]').attr('selected', true);
+
     epht.data1 = new DataSet();
     epht.data2 = new DataSet();
 
@@ -140,84 +148,89 @@ $(document).ready(function(){
     // table
     epht.data1.set_tid(ft_datasets[epht.data1.set]['tid']);
     epht.data2.set_tid(ft_datasets[epht.data2.set]['tid']);
-    //year
-    epht.data1.set_year($('#year1 option:selected').attr('value'));
-    epht.data2.set_year($('#year2 option:selected').attr('value'));
-    //Black centered title
-    epht.data1.set_title(ft_datasets[epht.data1.set]['title']);
-    epht.data2.set_title(ft_datasets[epht.data2.set]['title']);
-    //subtitles for calc grey side title
-    epht.data1.set_subtitle(ft_datasets[epht.data1.set]['subtitle']);
-    epht.data2.set_subtitle(ft_datasets[epht.data2.set]['subtitle']);
+    //load and set years    
+    $.when(getYears(epht.data1,'1'),getYears(epht.data2,'2')).done(function(){    
+      //Black centered title
+      epht.data1.set_title(ft_datasets[epht.data1.set]['title']);
+      epht.data2.set_title(ft_datasets[epht.data2.set]['title']);
+      //subtitles for calc grey side title
+      epht.data1.set_subtitle(ft_datasets[epht.data1.set]['subtitle']);
+      epht.data2.set_subtitle(ft_datasets[epht.data2.set]['subtitle']);
 
-    //name: the grey title text for each side  
-    DataSet.prototype.set_name = function(){
-      // if they are the same set, then the person will compare years
-      // so use years as names
-      if(epht.data1.set == epht.data2.set){
-        epht.data1.name = epht.data1.year;
-        epht.data2.name = epht.data2.year;
-      }
-      // if they are different sets
-      else{
-        // are they male-female or comparison to avg comparison?
-        if(epht.data1.title == epht.data2.title){
-          epht.data1.name = epht.data1.subtitle;
-          epht.data2.name = epht.data2.subtitle;
+      //name: the grey title text for each side  
+      DataSet.prototype.set_name = function(){
+        // if they are the same set, then the person will compare years
+        // so use years as names
+        if(epht.data1.set == epht.data2.set){
+          epht.data1.name = epht.data1.year;
+          epht.data2.name = epht.data2.year;
         }
-        // or comparison for different diseases
+        // if they are different sets
         else{
-          epht.data1.name = epht.data1.set;
-          epht.data2.name = epht.data2.set;
+          // are they male-female or comparison to avg comparison?
+          if(epht.data1.title == epht.data2.title){
+            epht.data1.name = epht.data1.subtitle;
+            epht.data2.name = epht.data2.subtitle;
+          }
+          // or comparison for different diseases
+          else{
+            epht.data1.name = epht.data1.set;
+            epht.data2.name = epht.data2.set;
+          }
         }
-      }
-    };
-    epht.data1.set_name();
-    epht.data2.set_name();
+      };
+      epht.data1.set_name();
+      epht.data2.set_name();
 
-    /*
-    functions with arguments in the done get called immediately; 
-    so we would have to have: .done(g.createVis) and restructure 
-    everything so no vars are passed which would be fairly easy, but 
-    require more restucturing of the slopegraph code. 
-    
-    Wrapping createVis in an anon function allieviates this, 
-    though looks funky
-    */
+      /*
+      functions with arguments in the done get called immediately; 
+      so we would have to have: .done(g.createVis) and restructure 
+      everything so no vars are passed which would be fairly easy, but 
+      require more restucturing of the slopegraph code. 
+      
+      Wrapping createVis in an anon function allieviates this, 
+      though looks funky
+      */
 
-    // when we get both datasets back from FT, create the vis
-    $.when(getFTData(epht.data1),getFTData(epht.data2))
-      .done(function(){
-        g.createVis(epht.data1.name,epht.data2.name,
-          epht.data1.data,epht.data2.data,epht.data1.title,epht.data2.title)
-      });
-    // when we get a dataset back after a change, update the vis. 
-    DataSet.prototype.update_data = function(){
-      $.when(getFTData(this))
+      // when we get both datasets back from FT, create the vis
+      $.when(getFTData(epht.data1),getFTData(epht.data2))
         .done(function(){
-          g.updateVis(epht.data1.name,epht.data2.name,
+          g.createVis(epht.data1.name,epht.data2.name,
             epht.data1.data,epht.data2.data,epht.data1.title,epht.data2.title)
         });
-    }
+      // when we get a dataset back after a change, update the vis. 
+      DataSet.prototype.update_data = function(){
+        $.when(getFTData(this))
+          .done(function(){
+            g.updateVis(epht.data1.name,epht.data2.name,
+              epht.data1.data,epht.data2.data,epht.data1.title,epht.data2.title)
+          });
+      }
+    });
   });
+
   // create listeners to the selection menus
   $('#data_set1').live('change',function(){
     epht.data1.set_set(this.value);
-    epht.data1.set_title(ft_datasets[epht.data1.set]['title']);
-    epht.data1.set_subtitle(ft_datasets[epht.data1.set]['subtitle']);
-    epht.data1.set_tid(ft_datasets[epht.data1.set]['tid']);
-    epht.data1.set_name();
-    
-    epht.data1.update_data();
+    $.when(getYears(epht.data1,'1')).done(function(){
+      epht.data1.set_title(ft_datasets[epht.data1.set]['title']);
+      epht.data1.set_subtitle(ft_datasets[epht.data1.set]['subtitle']);
+      epht.data1.set_tid(ft_datasets[epht.data1.set]['tid']);
+      epht.data1.set_name();
+      
+      epht.data1.update_data();
+    });
   });
   $('#data_set2').live('change',function(){
     epht.data2.set_set(this.value);
-    epht.data2.set_title(ft_datasets[epht.data2.set]['title']);
-    epht.data2.set_subtitle(ft_datasets[epht.data2.set]['subtitle']);
-    epht.data2.set_tid(ft_datasets[epht.data2.set]['tid']);
-    epht.data2.set_name();
+    $.when(getYears(epht.data2,'2')).done(function(){
+      epht.data2.set_title(ft_datasets[epht.data2.set]['title']);
+      epht.data2.set_subtitle(ft_datasets[epht.data2.set]['subtitle']);
+      epht.data2.set_tid(ft_datasets[epht.data2.set]['tid']);
+      epht.data2.set_name();
 
-    epht.data2.update_data();
+      epht.data2.update_data();
+    });
   });
 
   $('#year1').live('change',function(){
@@ -251,10 +264,12 @@ function getJsonFile(){
   return d.promise();
 }
 
-function getYears(self){
+function getYears(set,side){
+  var d = $.Deferred();
   var FTURL = 'https://www.googleapis.com/fusiontables/v1/tables/';
-  var tid = data_sets[self.value][$('#data_sets').attr('value')]['tid'];
-  var key = '?key=AIzaSyA7_yvmF6Aj0z9ctqiVVS5BI9cVIqx7F1w';
+  var tid = ft_datasets[set['set']]['tid'];
+  var key = '?key='+FT_API_KEY;
+
   $.getJSON(FTURL+tid+key,function(resp){
     var tempYears = [];
     for(var i in resp['columns']){
@@ -266,13 +281,18 @@ function getYears(self){
       }
     }
     tempYears.sort().reverse();
-    $('#years').children().remove();
+    $('#year'+side).children().remove();
     for(var i in tempYears){
-      $('#years').append('<option value = "'+
+      $('#year'+side).append('<option value = "'+
         tempYears[i]+'">'+tempYears[i]+'</option>');
     }
-    $('#years option[value="'+tempYears[0]+'"]').trigger('change');
-  });
+    $('#year'+side+' option[value="'+tempYears[0]+'"]').attr('selected', true);
+    set.set_year($($('#year'+side+' option:selected').attr('value'));
+  }).done(function(p){
+    d.resolve(p);
+  }).fail(d.reject);
+
+  return d.promise();
 }
 
 function getFTData(obj){
@@ -296,7 +316,7 @@ function getFTData(obj){
   var query = "SELECT 'Geography','"+obj.year+"' FROM " + obj.tid;
   
   var encodedQuery = encodeURIComponent(query);
-  var tail = '&key=AIzaSyA7_yvmF6Aj0z9ctqiVVS5BI9cVIqx7F1w';
+  var tail = '&key='+FT_API_KEY;
   console.log(url+encodedQuery+tail);
   $.getJSON(url+encodedQuery+tail,function(resp){
     console.log(url+encodedQuery+tail);
