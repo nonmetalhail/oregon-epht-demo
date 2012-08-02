@@ -24,13 +24,13 @@ $(document).ready(function(){
       
       getYears(this);
       
-      var tempYears = data_sets[this.value][$('#data_sets').attr('value')]['years'];
-      $('#years').children().remove();
-      for(var i in tempYears){
-        $('#years').append('<option value = "'+
-          tempYears[i]+'">'+tempYears[i]+'</option>');
-      }
-      $('#years option[value="2006"]').trigger('change');
+      // var tempYears = data_sets[this.value][$('#data_sets').attr('value')]['years'];
+      // $('#years').children().remove();
+      // for(var i in tempYears){
+      //   $('#years').append('<option value = "'+
+      //     tempYears[i]+'">'+tempYears[i]+'</option>');
+      // }
+      // $('#years option[value="2006"]').trigger('change');
     });
 
     $('#data_sets').live('change',function(){
@@ -59,18 +59,25 @@ function getFTLinks(){
 function getYears(self){
   var FTURL = 'https://www.googleapis.com/fusiontables/v1/tables/';
   var tid = data_sets[self.value][$('#data_sets').attr('value')]['tid'];
-  var key = '&key=AIzaSyA7_yvmF6Aj0z9ctqiVVS5BI9cVIqx7F1w';
+  var key = '?key=AIzaSyA7_yvmF6Aj0z9ctqiVVS5BI9cVIqx7F1w';
   $.getJSON(FTURL+tid+key,function(resp){
+    var tempYears = [];
     for(var i in resp['column']){
       if(resp['column'][i]["type"]=="NUMBER"){
-        console.log(resp['column'][i]["name"]);
+        tempYears.push(resp['column'][i]["name"]);
       }
       else{
-        console.log("rejected: " + resp['column'][i]["name"]);
+        console.log("rejected col: " + resp['column'][i]["name"]);
       }
-    }  
+    } 
+    tempYears.sort().reverse();
+    $('#years').children().remove();
+    for(var i in tempYears){
+      $('#years').append('<option value = "'+
+        tempYears[i]+'">'+tempYears[i]+'</option>');
+    }
+    $('#years option[value="'tempYears[0]'"]').trigger('change');
   });
-
 }
 
 function updateCharts(){
