@@ -287,7 +287,7 @@ function getYears(set,side){
         tempYears[i]+'">'+tempYears[i]+'</option>');
     }
     $('#year'+side+' option[value="'+tempYears[0]+'"]').attr('selected', true);
-    set.set_year($($('#year'+side+' option:selected').attr('value'));
+    set.set_year($('#year'+side+' option:selected').attr('value'));
   }).done(function(p){
     d.resolve(p);
   }).fail(d.reject);
