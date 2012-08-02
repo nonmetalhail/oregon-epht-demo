@@ -36,7 +36,7 @@ $(document).ready(function(){
           year+'">'+year+'</option>');
         temp.push(year);
       }
-      temp.sort().reverse();
+      temp.sort();
       $('#years option[value="'+temp[0]+'"]').trigger('change');
     });
     // add listener to sub-sets
