@@ -1,6 +1,5 @@
-// these two vars will need to be updated user to user
+// this var will need to be updated user to user
 var json_file_location = 'json/epht.json';
-var user_fusion_table_api_key = 'AIzaSyA7_yvmF6Aj0z9ctqiVVS5BI9cVIqx7F1w';
 
 // datastructure where the json will get loaded
 var data_sets = {};
