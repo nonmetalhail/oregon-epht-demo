@@ -30,14 +30,16 @@ $(document).ready(function(){
       
       var tempYears = data_sets[this.value][$('#data_sets').attr('value')]['years'];
       $('#years').children().remove();
-      var temp = [];
+      var yearSort = [];
       for(var year in tempYears){
-        $('#years').append('<option value = "'+
-          year+'">'+year+'</option>');
-        temp.push(year);
+        yearSort.push(year);
       }
-      temp.sort();
-      $('#years option[value="'+temp[0]+'"]').trigger('change');
+      yearSort.sort().reverse();
+      for(var i in yearSort){
+        $('#years').append('<option value = "'+
+          yearSort[i]+'">'+yearSort[i]+'</option>');
+      }
+      $('#years option[value="'+yearSort[0]+'"]').trigger('change');
     });
     // add listener to sub-sets
     $('#data_sets').live('change',function(){
