@@ -57,21 +57,19 @@ function getFTLinks(){
 }
 
 function getYears(self){
-  console.log('in getYears');
   var FTURL = 'https://www.googleapis.com/fusiontables/v1/tables/';
   var tid = data_sets[self.value][$('#data_sets').attr('value')]['tid'];
   var key = '?key=AIzaSyA7_yvmF6Aj0z9ctqiVVS5BI9cVIqx7F1w';
   $.getJSON(FTURL+tid+key,function(resp){
-    console.log(resp);
     var tempYears = [];
-    for(var i in resp['column']){
-      if(resp['column'][i]["type"]=="NUMBER"){
-        tempYears.push(resp['column'][i]["name"]);
+    for(var i in resp['columns']){
+      if(resp['columns'][i]["type"]=="NUMBER"){
+        tempYears.push(resp['columns'][i]["name"]);
       }
       else{
-        console.log("rejected col: " + resp['column'][i]["name"]);
+        console.log("rejected col: " + resp['columns'][i]["name"]);
       }
-    } 
+    }
     tempYears.sort().reverse();
     $('#years').children().remove();
     for(var i in tempYears){
