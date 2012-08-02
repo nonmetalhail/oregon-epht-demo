@@ -130,75 +130,76 @@ $(document).ready(function(){
       $('#data_set2').append('<option value = "'+
           item+'">'+toTitleCase(item)+'</option>');
     }
-  });
-  epht.data1 = new DataSet();
-  epht.data2 = new DataSet();
 
-  //set 
-  epht.data1.set_set($('#data_set1 option:selected').attr('value'));
-  epht.data2.set_set($('#data_set2 option:selected').attr('value'));
-  // table
-  epht.data1.set_tid(ft_datasets[epht.data1.set]['tid']);
-  epht.data2.set_tid(ft_datasets[epht.data2.set]['tid']);
-  //year
-  epht.data1.set_year($('#year1 option:selected').attr('value'));
-  epht.data2.set_year($('#year2 option:selected').attr('value'));
-  //Black centered title
-  epht.data1.set_title(ft_datasets[epht.data1.set]['title']);
-  epht.data2.set_title(ft_datasets[epht.data2.set]['title']);
-  //subtitles for calc grey side title
-  epht.data1.set_subtitle(ft_datasets[epht.data1.set]['subtitle']);
-  epht.data2.set_subtitle(ft_datasets[epht.data2.set]['subtitle']);
+    epht.data1 = new DataSet();
+    epht.data2 = new DataSet();
 
-  //name: the grey title text for each side  
-  DataSet.prototype.set_name = function(){
-    // if they are the same set, then the person will compare years
-    // so use years as names
-    if(epht.data1.set == epht.data2.set){
-      epht.data1.name = epht.data1.year;
-      epht.data2.name = epht.data2.year;
-    }
-    // if they are different sets
-    else{
-      // are they male-female or comparison to avg comparison?
-      if(epht.data1.title == epht.data2.title){
-        epht.data1.name = epht.data1.subtitle;
-        epht.data2.name = epht.data2.subtitle;
+    //set 
+    epht.data1.set_set($('#data_set1 option:selected').attr('value'));
+    epht.data2.set_set($('#data_set2 option:selected').attr('value'));
+    // table
+    epht.data1.set_tid(ft_datasets[epht.data1.set]['tid']);
+    epht.data2.set_tid(ft_datasets[epht.data2.set]['tid']);
+    //year
+    epht.data1.set_year($('#year1 option:selected').attr('value'));
+    epht.data2.set_year($('#year2 option:selected').attr('value'));
+    //Black centered title
+    epht.data1.set_title(ft_datasets[epht.data1.set]['title']);
+    epht.data2.set_title(ft_datasets[epht.data2.set]['title']);
+    //subtitles for calc grey side title
+    epht.data1.set_subtitle(ft_datasets[epht.data1.set]['subtitle']);
+    epht.data2.set_subtitle(ft_datasets[epht.data2.set]['subtitle']);
+
+    //name: the grey title text for each side  
+    DataSet.prototype.set_name = function(){
+      // if they are the same set, then the person will compare years
+      // so use years as names
+      if(epht.data1.set == epht.data2.set){
+        epht.data1.name = epht.data1.year;
+        epht.data2.name = epht.data2.year;
       }
-      // or comparison for different diseases
+      // if they are different sets
       else{
-        epht.data1.name = epht.data1.set;
-        epht.data2.name = epht.data2.set;
+        // are they male-female or comparison to avg comparison?
+        if(epht.data1.title == epht.data2.title){
+          epht.data1.name = epht.data1.subtitle;
+          epht.data2.name = epht.data2.subtitle;
+        }
+        // or comparison for different diseases
+        else{
+          epht.data1.name = epht.data1.set;
+          epht.data2.name = epht.data2.set;
+        }
       }
-    }
-  };
-  epht.data1.set_name();
-  epht.data2.set_name();
+    };
+    epht.data1.set_name();
+    epht.data2.set_name();
 
-  /*
-  functions with arguments in the done get called immediately; 
-  so we would have to have: .done(g.createVis) and restructure 
-  everything so no vars are passed which would be fairly easy, but 
-  require more restucturing of the slopegraph code. 
-  
-  Wrapping createVis in an anon function allieviates this, 
-  though looks funky
-  */
+    /*
+    functions with arguments in the done get called immediately; 
+    so we would have to have: .done(g.createVis) and restructure 
+    everything so no vars are passed which would be fairly easy, but 
+    require more restucturing of the slopegraph code. 
+    
+    Wrapping createVis in an anon function allieviates this, 
+    though looks funky
+    */
 
-  // when we get both datasets back from FT, create the vis
-  $.when(getFTData(epht.data1),getFTData(epht.data2))
-    .done(function(){
-      g.createVis(epht.data1.name,epht.data2.name,
-        epht.data1.data,epht.data2.data,epht.data1.title,epht.data2.title)
-    });
-  // when we get a dataset back after a change, update the vis. 
-  DataSet.prototype.update_data = function(){
-    $.when(getFTData(this))
+    // when we get both datasets back from FT, create the vis
+    $.when(getFTData(epht.data1),getFTData(epht.data2))
       .done(function(){
-        g.updateVis(epht.data1.name,epht.data2.name,
+        g.createVis(epht.data1.name,epht.data2.name,
           epht.data1.data,epht.data2.data,epht.data1.title,epht.data2.title)
       });
-  }
+    // when we get a dataset back after a change, update the vis. 
+    DataSet.prototype.update_data = function(){
+      $.when(getFTData(this))
+        .done(function(){
+          g.updateVis(epht.data1.name,epht.data2.name,
+            epht.data1.data,epht.data2.data,epht.data1.title,epht.data2.title)
+        });
+    }
+  });
   // create listeners to the selection menus
   $('#data_set1').live('change',function(){
     epht.data1.set_set(this.value);
