@@ -22,6 +22,8 @@ $(document).ready(function(){
       }
       // $('#data_sets option[value="All"]').trigger('change');
       
+      getYears();
+      
       var tempYears = data_sets[this.value][$('#data_sets').attr('value')]['years'];
       $('#years').children().remove();
       for(var i in tempYears){
@@ -52,6 +54,22 @@ function getFTLinks(){
   }).fail(d.reject);
 
   return d.promise();
+}
+
+function getYears(){
+  var FTURL = 'https://www.googleapis.com/fusiontables/v1/tables/';
+  var tid = data_sets[this.value][$('#data_sets').attr('value')]['tid'];
+  $.getJSON(FTURL+tid,function(resp){
+    for(var i in resp['column']){
+      if(resp['column'][i]["type"]=="NUMBER"){
+        console.log(resp['column'][i]["name"]);
+      }
+      else{
+        console.log("rejected: " + resp['column'][i]["name"]);
+      }
+    }  
+  });
+
 }
 
 function updateCharts(){
