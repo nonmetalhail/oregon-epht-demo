@@ -32,45 +32,51 @@
  *
  */
 
-// fusion table table id and a title which should match the html select values
-// in a better world, i would automate populating the selects with these values
-// the year values could be populated by calling a DESCRIBE on the table, etc
+
+// location of the json datafile
+var json_file_location = 'json/slopegraph.json'
+/* 
+  datastructure to hold the json response
+  fusion table table id and a title which should match the html select values
+  selects are populated with these values
+  the year values could be populated by calling a DESCRIBE on the table, etc
+*/
 var ft_datasets = {
-  'asthma':{
-    'title': 'Asthma',
-    'subtitle':'total',
-    'tid': '1AzMRV-2WSSNeLOalrKdX0sEKry3oIxwTwNnJAwA'
-  },
-  'asthma male':{
-    'title': 'Asthma',
-    'subtitle':'male',
-    'tid': '1Z_oTv84uXB8pUg66wKszkndWMwtDK1CbmB3UGIA'
-  },
-  'asthma female':{
-    'title': 'Asthma',
-    'subtitle':'female',
-    'tid': '1IabRRnJ2CspLTwLruJz8or6QjhGb6NEVvXy8JqQ'
-  },
-  'cancer':{
-    'title': 'Cancer',
-    'subtitle':'total',
-    'tid': '1glNdT_IDaWxjw4Fv2SZgsi64_-2Yb7cdhnMfdSs'
-  },
-  'heart attack':{
-    'title': 'Heart Attack',
-    'subtitle':'total',
-    'tid': '1Mwr9Fh2b_7kpjYXtxilXXxG8-juVB77yFoxSrqU'
-  },
-  'heart attack male':{
-    'title': 'Heart Attack',
-    'subtitle':'male',
-    'tid': '1Nfy2UQf-6UyigUsqODE08rld-nc2fgiWTvpmA2M'
-  },
-  'heart attack female':{
-    'title': 'Heart Attack',
-    'subtitle':'female',
-    'tid': '1bQYDsuGW-8igHMww5aqIbw-MNO79wQEBaTgCS6U'
-  }
+  // 'asthma':{
+  //   'title': 'Asthma',
+  //   'subtitle':'total',
+  //   'tid': '1AzMRV-2WSSNeLOalrKdX0sEKry3oIxwTwNnJAwA'
+  // },
+  // 'asthma male':{
+  //   'title': 'Asthma',
+  //   'subtitle':'male',
+  //   'tid': '1Z_oTv84uXB8pUg66wKszkndWMwtDK1CbmB3UGIA'
+  // },
+  // 'asthma female':{
+  //   'title': 'Asthma',
+  //   'subtitle':'female',
+  //   'tid': '1IabRRnJ2CspLTwLruJz8or6QjhGb6NEVvXy8JqQ'
+  // },
+  // 'cancer':{
+  //   'title': 'Cancer',
+  //   'subtitle':'total',
+  //   'tid': '1glNdT_IDaWxjw4Fv2SZgsi64_-2Yb7cdhnMfdSs'
+  // },
+  // 'heart attack':{
+  //   'title': 'Heart Attack',
+  //   'subtitle':'total',
+  //   'tid': '1Mwr9Fh2b_7kpjYXtxilXXxG8-juVB77yFoxSrqU'
+  // },
+  // 'heart attack male':{
+  //   'title': 'Heart Attack',
+  //   'subtitle':'male',
+  //   'tid': '1Nfy2UQf-6UyigUsqODE08rld-nc2fgiWTvpmA2M'
+  // },
+  // 'heart attack female':{
+  //   'title': 'Heart Attack',
+  //   'subtitle':'female',
+  //   'tid': '1bQYDsuGW-8igHMww5aqIbw-MNO79wQEBaTgCS6U'
+  // }
 }
 
 // General d3 vis setup
@@ -116,6 +122,15 @@ var DataSet = function (){
 };
 
 $(document).ready(function(){
+  $.when(getJsonFile()).done(function(){
+    console.log(data_sets)
+    for(var item in data_sets){
+      $('#data_set1').append('<option value = "'+
+          item+'">'+toTitleCase(item)+'</option>');
+      $('#data_set2').append('<option value = "'+
+          item+'">'+toTitleCase(item)+'</option>');
+    }
+  });
   epht.data1 = new DataSet();
   epht.data2 = new DataSet();
 
@@ -215,6 +230,49 @@ $(document).ready(function(){
     epht.data2.update_data();
   });
 });
+
+function toTitleCase(str)
+{
+  return str.replace(/\w\S*/g, 
+    function(txt){
+      return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+    });
+}
+
+function getJsonFile(){
+  var d = $.Deferred();
+  $.getJSON(json_file_location,function(resp){
+    ft_datasets = resp;
+  }).done(function(p){
+    d.resolve(p);
+  }).fail(d.reject);
+
+  return d.promise();
+}
+
+function getYears(self){
+  var FTURL = 'https://www.googleapis.com/fusiontables/v1/tables/';
+  var tid = data_sets[self.value][$('#data_sets').attr('value')]['tid'];
+  var key = '?key=AIzaSyA7_yvmF6Aj0z9ctqiVVS5BI9cVIqx7F1w';
+  $.getJSON(FTURL+tid+key,function(resp){
+    var tempYears = [];
+    for(var i in resp['columns']){
+      if(resp['columns'][i]["type"]=="NUMBER"){
+        tempYears.push(resp['columns'][i]["name"]);
+      }
+      else{
+        console.log("rejected col: " + resp['columns'][i]["name"]);
+      }
+    }
+    tempYears.sort().reverse();
+    $('#years').children().remove();
+    for(var i in tempYears){
+      $('#years').append('<option value = "'+
+        tempYears[i]+'">'+tempYears[i]+'</option>');
+    }
+    $('#years option[value="'+tempYears[0]+'"]').trigger('change');
+  });
+}
 
 function getFTData(obj){
   var d = $.Deferred();
