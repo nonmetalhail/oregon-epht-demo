@@ -758,8 +758,7 @@ function slopeGraphBuilder(){
           return d3.selectAll('.'+d.label.replace(' ','_'))
             .classed("over",true)
             .call(fadeRest)
-            .style('opacity',1)
-            .css('stroke-width',2);
+            .style('opacity',1);
         })
         .on("mouseout", function(d){
           return d3.selectAll('.'+d.label.replace(' ','_'))
@@ -860,7 +859,7 @@ function slopeGraphBuilder(){
   }
   // unfade vis by setting opacity to 1
   function unfadeRest(){
-    $('g').children().css('opacity',1).css('stroke-width',1);
+    $('g').children().css('opacity',1);
   }
 
   //shows the box
