@@ -63,21 +63,21 @@ h4{
 }
 
 line.Oregon{
-  stroke: #2569e1/*#000cff*/;
+  stroke: #000/*#2569e1*/;
   stroke-width: 2;
 }
 
-text.Oregon{
+/*text.Oregon{
   fill: #000cff;
-}
+}*/
 
 line.over{
-  stroke: #dd4d39/*#bb2629*/;
+  /*stroke: #dd4d39;*/
   stroke-width: 2;
   opacity: 1;
 }
 
 text.over{
-  fill: #dd4d39/*#bb2629*/;
+  /*fill: #dd4d39;*/
   opacity: 1;
 }

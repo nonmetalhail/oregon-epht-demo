@@ -740,7 +740,7 @@ function slopeGraphBuilder(){
           return y(d.right_coord)
         })
         .attr('stroke', function(d){
-          return (d.left-d.right)>0 ? "#24a856":"#ffd427"
+          return (d.left-d.right)>0 ? "#B44822":"#187D4D"
         })
         // all lines grey instead of colored by +/-
         // .attr('stroke', '#777')
@@ -844,7 +844,7 @@ function slopeGraphBuilder(){
         return y(d.right_coord)
       })
       .attr('stroke', function(d){
-        return (d.left-d.right)>0 ? "#24a856":"#ffd427"
+        return (d.left-d.right)>0 ? "#B44822":"#187D4D"
       })
       // all lines grey instead of colored by +/-
       // .attr('stroke', '#777')
