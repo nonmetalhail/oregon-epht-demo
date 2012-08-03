@@ -740,7 +740,7 @@ function slopeGraphBuilder(){
           return y(d.right_coord)
         })
         .attr('stroke', function(d){
-          return (d.left-d.right)>0 ? "#B44822":"#187D4D"
+          return (d.left-d.right)>0 ? "#187D4D":"#B44822"
         })
         // all lines grey instead of colored by +/-
         // .attr('stroke', '#777')
@@ -844,7 +844,7 @@ function slopeGraphBuilder(){
         return y(d.right_coord)
       })
       .attr('stroke', function(d){
-        return (d.left-d.right)>0 ? "#B44822":"#187D4D"
+        return (d.left-d.right)>0 ? "#187D4D":"#B44822"
       })
       // all lines grey instead of colored by +/-
       // .attr('stroke', '#777')
@@ -853,13 +853,13 @@ function slopeGraphBuilder(){
 
   // fade vis by setting opacity to .5
   function fadeRest(){
-    $('g').children().css('opacity',.3);
+    $('g').children().css('opacity',.2);
 
-    $('.Oregon').css('opacity',1);
+    $('.Oregon').css('opacity',1).css('stroke',2);
   }
   // unfade vis by setting opacity to 1
   function unfadeRest(){
-    $('g').children().css('opacity',1);
+    $('g').children().css('opacity',1).css('stroke',1);
   }
 
   //shows the box
