@@ -855,11 +855,11 @@ function slopeGraphBuilder(){
   function fadeRest(){
     $('g').children().css('opacity',.2);
 
-    $('.Oregon').css('opacity',1).css('stroke',2);
+    $('.Oregon').css('opacity',1).css('stroke-width',2);
   }
   // unfade vis by setting opacity to 1
   function unfadeRest(){
-    $('g').children().css('opacity',1).css('stroke',1);
+    $('g').children().css('opacity',1).css('stroke-width',1);
   }
 
   //shows the box
