@@ -631,12 +631,12 @@ function slopeGraphBuilder(){
           // returns a whole mess of stuff: again, replace for Hood River
           // select all elements for a county based on class name
           return d3.selectAll('.'+d.label.replace(' ','_'))
-            // add class over, see CSS
-            .classed("over",true)
             // run function fadeRest to lower opacity
             .call(fadeRest)
+            // add class over, see CSS
+            .classed("over",true);
             // override the above action on this county
-            .style('opacity',1);
+            // .style('opacity',1);
         })
         // mouseout, basically reverses mouseover
         .on("mouseout", function(d){
@@ -662,9 +662,9 @@ function slopeGraphBuilder(){
         .on("mouseover", function(d){
           displayBox(d,false);
           return d3.selectAll('.'+d.label.replace(' ','_'))
-            .classed("over",true)
             .call(fadeRest)
-            .style('opacity',1);
+            .classed("over",true);
+            // .style('opacity',1);
         })
         .on("mouseout", function(d){
           return d3.selectAll('.'+d.label.replace(' ','_'))
@@ -690,9 +690,9 @@ function slopeGraphBuilder(){
         .on("mouseover", function(d){
           displayBox(d,true);
           return d3.selectAll('.'+d.label.replace(' ','_'))
-            .classed("over",true)
             .call(fadeRest)
-            .style('opacity',1);
+            .classed("over",true);
+            // .style('opacity',1);
         })
         .on("mouseout", function(d){
           return d3.selectAll('.'+d.label.replace(' ','_'))
@@ -717,9 +717,9 @@ function slopeGraphBuilder(){
         .on("mouseover", function(d){
           displayBox(d,true);
           return d3.selectAll('.'+d.label.replace(' ','_'))
-            .classed("over",true)
             .call(fadeRest)
-            .style('opacity',1);
+            .classed("over",true);
+            // .style('opacity',1);
         })
         .on("mouseout", function(d){
           return d3.selectAll('.'+d.label.replace(' ','_'))
