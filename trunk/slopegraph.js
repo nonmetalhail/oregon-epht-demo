@@ -759,7 +759,7 @@ function slopeGraphBuilder(){
             .classed("over",true)
             .call(fadeRest)
             .style('opacity',1)
-            .style('stroke-width',2);
+            .css('stroke-width',2);
         })
         .on("mouseout", function(d){
           return d3.selectAll('.'+d.label.replace(' ','_'))
