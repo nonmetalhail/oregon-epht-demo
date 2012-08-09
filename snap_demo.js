@@ -26,22 +26,12 @@ $(document).ready(function(){
         $('#data_sets').append('<option value = "'+
           item+'">'+item+'</option>');
       }
-      
-      var tempYears = data_sets[this.value][$('#data_sets').attr('value')]['years'];
-      $('#years').children().remove();
-      var yearSort = [];
-      for(var year in tempYears){
-        yearSort.push(year);
-      }
-      yearSort.sort().reverse();
-      for(var i in yearSort){
-        $('#years').append('<option value = "'+
-          yearSort[i]+'">'+yearSort[i]+'</option>');
-      }
-      $('#years option[value="'+yearSort[0]+'"]').trigger('change');
+      addYears();
+      updateCharts();
     });
     // add listener to sub-sets
     $('#data_sets').live('change',function(){
+      addYears()
       updateCharts();
     });
     // add listener to years
@@ -52,6 +42,15 @@ $(document).ready(function(){
     $('#disease_sets').trigger('change');
   });
 });
+
+function addYears(){
+  var tempYears = data_sets[this.value][$('#data_sets').attr('value')]['years'];
+  $('#years').children().remove();
+  for(var year in tempYears){
+    $('#years').append('<option value = "'+
+      year+'">'+year+'</option>');
+  }
+}
 
 // function to load the json file
 function getFTLinks(){
