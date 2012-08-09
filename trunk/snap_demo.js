@@ -12,9 +12,10 @@ var chartConfig = function(tid,year){
 }
 
 $(document).ready(function(){
+  console.log("start");
   // loads the json file; when done, loads the datasets into the select menu
   $.when(getFTLinks()).done(function(){
-    console.log(data_sets)
+    console.log(data_sets);
     for(var item in data_sets){
       $('#disease_sets').append('<option value = "'+
           item+'">'+item+'</option>');
@@ -58,6 +59,7 @@ $(document).ready(function(){
 function getFTLinks(){
   var d = $.Deferred();
   $.getJSON(json_file_location,function(resp){
+    console.log(resp);
     data_sets = resp;
   }).done(function(p){
     d.resolve(p);
