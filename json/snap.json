@@ -6,7 +6,7 @@
       "title":"Total Population",      
       "years":{
         "Count":{
-          "chart": "POP  BY COUNTY 2011",
+          "chart": "POP BY COUNTY 2011",
           "map": "https://www.google.com/fusiontables/embedviz?viz=MAP&q=select+col2%3E%3E1+from+1hD92n0UXGs0u6hANpOIMxie_j2FYmfRlZ2h9h68&h=false&lat=44.3&lng=-121.15&z=6&t=1&l=col2%3E%3E1&y=3&tmplt=-1"
         }
       }
