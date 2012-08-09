@@ -72,15 +72,13 @@ function updateCharts(){
   var year = $('#years option:selected').attr('value');
 
   var data = data_sets[disease][dataset];
-  // console.log(disease);
-  // console.log(dataset);
-  // console.log(data);
+
   $('#map').attr('src',data['years'][year]['map']);
   // use when chart embedds are in json
   // $('#graph').attr('src',data['years'][year]['chart']);
   var column = encodeURIComponent(data['years'][year]['chart']);
   $('#graph').attr('src',chartConfig(data['tid'],column));
-  $('#table').attr('src',data['table']);
+  $('#table2').attr('src',data['table']);
   $('#title').text(data['title']);
   $('#explore').attr('href','https://www.google.com/fusiontables/data?docid='+data['tid']);
 }
