@@ -31,7 +31,7 @@ $(document).ready(function(){
     });
     // add listener to sub-sets
     $('#data_sets').live('change',function(){
-      addYears()
+      addYears();
       updateCharts();
     });
     // add listener to years
@@ -44,7 +44,7 @@ $(document).ready(function(){
 });
 
 function addYears(){
-  var tempYears = data_sets[this.value][$('#data_sets').attr('value')]['years'];
+  var tempYears = data_sets[$('#disease_sets').attr('value')][$('#data_sets').attr('value')]['years'];
   $('#years').children().remove();
   for(var year in tempYears){
     $('#years').append('<option value = "'+
