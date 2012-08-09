@@ -8,14 +8,13 @@ var data_sets = {};
    need this. Instead, put embedd links into the json file.
 */
 var chartConfig = function(tid,year){
+  console.log("https://www.google.com/fusiontables/embedviz?&containerId=gviz_canvas&viz=GVIZ&q=select%20'Geography'%2C%20'"+year+"'%20from%20"+tid+"%20order%20by%20'"+year+"'%20DESC%20limit%20100&t=BAR&gco_width=500&gco_height=400&gco_chartArea=%7B%22height%22%3A%22350%22%2C%22top%22%3A%2220%22%7D&gco_hAxis=%7B%22viewWindowMode%22%3A%22pretty%22%2C%22viewWindow%22%3A%7B%7D%2C%22useFormatFromData%22%3Atrue%2C%22format%22%3A%22%22%7D&gco_vAxis=%7B%22format%22%3A%22%22%7D&gco_vAxes=%5B%7B%22title%22%3Anull%2C%22minValue%22%3Anull%2C%22maxValue%22%3Anull%2C%22viewWindowMode%22%3A%22pretty%22%2C%22viewWindow%22%3A%7B%22max%22%3Anull%2C%22min%22%3Anull%7D%2C%22useFormatFromData%22%3Atrue%2C%22textStyle%22%3A%7B%22color%22%3A%22%23222%22%2C%22fontSize%22%3A%2208%22%7D%7D%2C%7B%22viewWindowMode%22%3A%22pretty%22%2C%22viewWindow%22%3A%7B%7D%2C%22useFormatFromData%22%3Atrue%7D%5D&gco_curveType=&gco_animation=%7B%22duration%22%3A500%7D&gco_booleanRole=certainty&gco_lineWidth=2&gco_series=%7B%220%22%3A%7B%22hasAnnotations%22%3Atrue%7D%7D&gco_legend=inside&gco_strictFirstColumnType=false")
   return "https://www.google.com/fusiontables/embedviz?&containerId=gviz_canvas&viz=GVIZ&q=select%20'Geography'%2C%20'"+year+"'%20from%20"+tid+"%20order%20by%20'"+year+"'%20DESC%20limit%20100&t=BAR&gco_width=500&gco_height=400&gco_chartArea=%7B%22height%22%3A%22350%22%2C%22top%22%3A%2220%22%7D&gco_hAxis=%7B%22viewWindowMode%22%3A%22pretty%22%2C%22viewWindow%22%3A%7B%7D%2C%22useFormatFromData%22%3Atrue%2C%22format%22%3A%22%22%7D&gco_vAxis=%7B%22format%22%3A%22%22%7D&gco_vAxes=%5B%7B%22title%22%3Anull%2C%22minValue%22%3Anull%2C%22maxValue%22%3Anull%2C%22viewWindowMode%22%3A%22pretty%22%2C%22viewWindow%22%3A%7B%22max%22%3Anull%2C%22min%22%3Anull%7D%2C%22useFormatFromData%22%3Atrue%2C%22textStyle%22%3A%7B%22color%22%3A%22%23222%22%2C%22fontSize%22%3A%2208%22%7D%7D%2C%7B%22viewWindowMode%22%3A%22pretty%22%2C%22viewWindow%22%3A%7B%7D%2C%22useFormatFromData%22%3Atrue%7D%5D&gco_curveType=&gco_animation=%7B%22duration%22%3A500%7D&gco_booleanRole=certainty&gco_lineWidth=2&gco_series=%7B%220%22%3A%7B%22hasAnnotations%22%3Atrue%7D%7D&gco_legend=inside&gco_strictFirstColumnType=false"
 }
 
 $(document).ready(function(){
-  console.log("start");
   // loads the json file; when done, loads the datasets into the select menu
   $.when(getFTLinks()).done(function(){
-    console.log(data_sets);
     for(var item in data_sets){
       $('#disease_sets').append('<option value = "'+
           item+'">'+item+'</option>');
@@ -59,7 +58,6 @@ $(document).ready(function(){
 function getFTLinks(){
   var d = $.Deferred();
   $.getJSON(json_file_location,function(resp){
-    console.log(resp);
     data_sets = resp;
   }).done(function(p){
     d.resolve(p);
@@ -81,7 +79,8 @@ function updateCharts(){
   $('#map').attr('src',data['years'][year]['map']);
   // use when chart embedds are in json
   // $('#graph').attr('src',data['years'][year]['chart']);
-  $('#graph').attr('src',chartConfig(data['tid'],data['years'][year]['chart']));
+  var column = encodeURIComponent(data['years'][year]['chart']);
+  $('#graph').attr('src',chartConfig(data['tid'],column));
   $('#table').attr('src',data['table']);
   $('#title').text(data['title']);
   $('#explore').attr('href','https://www.google.com/fusiontables/data?docid='+data['tid']);
