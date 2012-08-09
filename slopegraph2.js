@@ -846,7 +846,7 @@ function slopeGraphBuilder(){
         .filter(function(d){
           return d.label != g.label && d.label != 'Oregon'
         })
-        .transition().ease('exp')
+        .transition().ease('exp').duration(500)
         .style('opacity',opacity);
 
       d3.selectAll('.Oregon')
@@ -888,7 +888,7 @@ function slopeGraphBuilder(){
     d3.select("#num_left").text(lVal);
     d3.select("#num_right").text(rVal);
     // shows the inforbox
-    d3.select("#infobox").transition().delay(50).ease('poly',19).style("opacity", 1);
+    d3.select("#infobox").transition().delay(50).duration(500).ease('poly',19).style("opacity", 1);
   } 
   //hides the box again 
   function removeBox() 
