@@ -46,50 +46,58 @@ var default_dataset_2 = 'asthma female'
   the year values could be populated by calling a DESCRIBE on the table, etc
 */
 var ft_datasets = {
-  // 'asthma':{
-  //   'title': 'Asthma',
-  //   'subtitle':'total',
-  //   'tid': '1AzMRV-2WSSNeLOalrKdX0sEKry3oIxwTwNnJAwA'
-  // },
-  // 'asthma male':{
-  //   'title': 'Asthma',
-  //   'subtitle':'male',
-  //   'tid': '1Z_oTv84uXB8pUg66wKszkndWMwtDK1CbmB3UGIA'
-  // },
-  // 'asthma female':{
-  //   'title': 'Asthma',
-  //   'subtitle':'female',
-  //   'tid': '1IabRRnJ2CspLTwLruJz8or6QjhGb6NEVvXy8JqQ'
-  // },
-  // 'cancer':{
-  //   'title': 'Cancer',
-  //   'subtitle':'total',
-  //   'tid': '1glNdT_IDaWxjw4Fv2SZgsi64_-2Yb7cdhnMfdSs'
-  // },
-  // 'heart attack':{
-  //   'title': 'Heart Attack',
-  //   'subtitle':'total',
-  //   'tid': '1Mwr9Fh2b_7kpjYXtxilXXxG8-juVB77yFoxSrqU'
-  // },
-  // 'heart attack male':{
-  //   'title': 'Heart Attack',
-  //   'subtitle':'male',
-  //   'tid': '1Nfy2UQf-6UyigUsqODE08rld-nc2fgiWTvpmA2M'
-  // },
-  // 'heart attack female':{
-  //   'title': 'Heart Attack',
-  //   'subtitle':'female',
-  //   'tid': '1bQYDsuGW-8igHMww5aqIbw-MNO79wQEBaTgCS6U'
-  // }
+  'asthma':{
+    'title': 'Asthma',
+    'subtitle':'total',
+    'tid': '1AzMRV-2WSSNeLOalrKdX0sEKry3oIxwTwNnJAwA'
+  },
+  'asthma male':{
+    'title': 'Asthma',
+    'subtitle':'male',
+    'tid': '1Z_oTv84uXB8pUg66wKszkndWMwtDK1CbmB3UGIA'
+  },
+  'asthma female':{
+    'title': 'Asthma',
+    'subtitle':'female',
+    'tid': '1IabRRnJ2CspLTwLruJz8or6QjhGb6NEVvXy8JqQ'
+  },
+  'cancer':{
+    'title': 'Cancer',
+    'subtitle':'total',
+    'tid': '1glNdT_IDaWxjw4Fv2SZgsi64_-2Yb7cdhnMfdSs'
+  },
+  'heart attack':{
+    'title': 'Heart Attack',
+    'subtitle':'total',
+    'tid': '1Mwr9Fh2b_7kpjYXtxilXXxG8-juVB77yFoxSrqU'
+  },
+  'heart attack male':{
+    'title': 'Heart Attack',
+    'subtitle':'male',
+    'tid': '1Nfy2UQf-6UyigUsqODE08rld-nc2fgiWTvpmA2M'
+  },
+  'heart attack female':{
+    'title': 'Heart Attack',
+    'subtitle':'female',
+    'tid': '1bQYDsuGW-8igHMww5aqIbw-MNO79wQEBaTgCS6U'
+  }
 }
+// //blue/yellow
+// var color1 = "#ffd300"
+// var color2 = "#3914af"
+// //red/green
+// var color1 = "#2EAC70"
+// var color2 = "#F77143"
+//red/green
+var color1 = "#5895BD"
+var color2 = "#7ED15A"
 
 // General d3 vis setup
-
-var WIDTH = 500;
+var WIDTH = 800;
 var HEIGHT = 850;
 
-var LEFT_MARGIN = 150;
-var RIGHT_MARGIN = 150;
+var LEFT_MARGIN = 300;
+var RIGHT_MARGIN = 300;
 var TOP_MARGIN = 50;
 var BOTTOM_MARGIN = 50;
 
@@ -126,7 +134,7 @@ var DataSet = function (){
 };
 
 $(document).ready(function(){
-  $.when(getJsonFile()).done(function(){
+  // $.when(getJsonFile()).done(function(){
     console.log(ft_datasets)
     for(var item in ft_datasets){
       $('#data_set1').append('<option value = "'+
@@ -207,7 +215,7 @@ $(document).ready(function(){
           });
       }
     });
-  });
+  // });
 
   // create listeners to the selection menus
   $('#data_set1').live('change',function(){
@@ -625,26 +633,9 @@ function slopeGraphBuilder(){
         .attr('fill', 'black')
         // replace is for Hood River; else interpreted as two separate classes
         .attr("class",function(d){return d.label.replace(' ','_')})
-        .on("mouseover", function(d){
-          // runs displayBox function to show info pane
-          displayBox(d,false);
-          // returns a whole mess of stuff: again, replace for Hood River
-          // select all elements for a county based on class name
-          return d3.selectAll('.'+d.label.replace(' ','_'))
-            // run function fadeRest to lower opacity
-            .call(fadeRest)
-            // add class over, see CSS
-            .classed("over",true)
-            // override the above action on this county
-            .style('opacity',1);
-        })
-        // mouseout, basically reverses mouseover
-        .on("mouseout", function(d){
-          return d3.selectAll('.'+d.label.replace(' ','_'))
-          .classed("over",false)
-          .call(removeBox)
-          .call(unfadeRest);
-        });
+        .attr("cat","geo")
+        .on("mouseover", fadeRest(24,0.2,2,false,true))
+        .on("mouseout", fadeRest(10,1,1,false,false));
 
     // left values
     this.lv = g.selectAll('.left_values')
@@ -659,19 +650,9 @@ function slopeGraphBuilder(){
         .text(function(d,i){ return d.left})
         .attr('fill', 'black')
         .attr("class",function(d){return d.label.replace(' ','_')})
-        .on("mouseover", function(d){
-          displayBox(d,false);
-          return d3.selectAll('.'+d.label.replace(' ','_'))
-            .call(fadeRest)
-            .classed("over",true)
-            .style('opacity',1);
-        })
-        .on("mouseout", function(d){
-          return d3.selectAll('.'+d.label.replace(' ','_'))
-          .classed("over",false)
-          .call(removeBox)
-          .call(unfadeRest);
-        });
+        .attr("cat","val")
+        .on("mouseover", fadeRest(24,0.2,2,false,true))
+        .on("mouseout", fadeRest(10,1,1,false,false));
 
     // right labels
     this.rl = g.selectAll('.right_labels')
@@ -687,19 +668,9 @@ function slopeGraphBuilder(){
         .text(function(d,i){ return d.label.toUpperCase()})
         .attr('fill', 'black')
         .attr("class",function(d){return d.label.replace(' ','_')})
-        .on("mouseover", function(d){
-          displayBox(d,true);
-          return d3.selectAll('.'+d.label.replace(' ','_'))
-            .call(fadeRest)
-            .classed("over",true)
-            .style('opacity',1);
-        })
-        .on("mouseout", function(d){
-          return d3.selectAll('.'+d.label.replace(' ','_'))
-            .classed("over",false)
-            .call(removeBox)
-            .call(unfadeRest);
-        });
+        .attr("cat","geo")
+        .on("mouseover", fadeRest(24,0.2,2,true,true))
+        .on("mouseout", fadeRest(10,1,1,true,false));
 
     //right values
     this.rv = g.selectAll('.right_values')
@@ -714,19 +685,9 @@ function slopeGraphBuilder(){
         .text(function(d,i){ return d.right})
         .attr('fill', 'black')
         .attr("class",function(d){return d.label.replace(' ','_')})
-        .on("mouseover", function(d){
-          displayBox(d,true);
-          return d3.selectAll('.'+d.label.replace(' ','_'))
-            .call(fadeRest)
-            .classed("over",true)
-            .style('opacity',1);
-        })
-        .on("mouseout", function(d){
-          return d3.selectAll('.'+d.label.replace(' ','_'))
-            .classed("over",false)
-            .call(removeBox)
-            .call(unfadeRest);
-        });
+        .attr("cat","val")
+        .on("mouseover", fadeRest(24,0.2,2,true,true))
+        .on("mouseout", fadeRest(10,1,1,true,false));
 
     // slope lines
     this.slopes = g.selectAll('.slopes')
@@ -740,7 +701,7 @@ function slopeGraphBuilder(){
           return y(d.right_coord)
         })
         .attr('stroke', function(d){
-          return (d.left-d.right)>0 ? "#2EAC70":"#F77143"
+          return (d.left-d.right)>0 ? color1:color2
         })
         // all lines grey instead of colored by +/-
         // .attr('stroke', '#777')
@@ -753,19 +714,8 @@ function slopeGraphBuilder(){
           // return Math.pow(Math.abs(d.left-d.right),2)/400+Math.abs(d.left-d.right)/20+.5
         // })
         .attr("class",function(d){return d.label.replace(' ','_')})
-        .on("mouseover", function(d){
-          displayBox(d,true);
-          return d3.selectAll('.'+d.label.replace(' ','_'))
-            .classed("over",true)
-            .call(fadeRest)
-            .style('opacity',1);
-        })
-        .on("mouseout", function(d){
-          return d3.selectAll('.'+d.label.replace(' ','_'))
-            .classed("over",false)
-            .call(removeBox)
-            .call(unfadeRest);
-        });
+        .on("mouseover", fadeRest(24,0.2,2,true,true))
+        .on("mouseout", fadeRest(10,1,1,true,false));
 
     // sg.selectAll('text')
       
@@ -844,7 +794,7 @@ function slopeGraphBuilder(){
         return y(d.right_coord)
       })
       .attr('stroke', function(d){
-        return (d.left-d.right)>0 ? "#2EAC70":"#F77143"
+        return (d.left-d.right)>0 ? color1:color2
       })
       // all lines grey instead of colored by +/-
       // .attr('stroke', '#777')
@@ -852,15 +802,59 @@ function slopeGraphBuilder(){
   }
 
   // fade vis by setting opacity to .5
-  function fadeRest(){
-    $('g').children().css('opacity',.2);
+  function fadeRest(font_size,opacity,stroke,right,fade_in){
+    return function(g,i){
+      /* using this selector instead is then based on the filter in ('g > *')
+         dont fully undertand this, but could be useful if you want to compare
+         two different sets
+      */
+      // d3.selectAll('[cat="geo"]')
+      d3.selectAll('.'+g.label+'[cat="geo"]')
+        .style('opacity',1)
+        .transition() 
+        .duration(1000) 
+        .ease("elastic", 4, .3)
+        .attr('font-size',font_size);
+      // d3.selectAll('[cat="geo"]')
+      d3.selectAll('.'+g.label+'[cat="val"]')
+        .style('opacity',1)
+        .transition() 
+        .duration(1000) 
+        .ease("elastic", 4, .3)
+        .attr('font-size',(fade_in)?font_size-10:font_size);
 
-    $('.Oregon').css('opacity',1).css('stroke-width',2);
-  }
-  // unfade vis by setting opacity to 1
-  function unfadeRest(){
-    $('g').children().css('opacity',1);
-    $('.Oregon').css('stroke-width',1);
+      d3.selectAll('line.'+ g.label.replace(' ','_'))
+        .style('opacity',1)
+        .transition() 
+        .duration(1000) 
+        .ease("elastic", 4, .3)
+        .attr('stroke-width',stroke);
+      
+      d3.selectAll('g > text')
+        .filter(function(d){
+          return d.label != g.label
+        })
+        .attr('font-size',10)
+
+      d3.selectAll('g > line')
+        .filter(function(d){
+          return d.label != g.label
+        })
+        .attr('stroke-width',1)
+
+      d3.selectAll('g > *')
+        .filter(function(d){
+          return d.label != g.label && d.label != 'Oregon'
+        })
+        .transition().ease('exp').duration(500)
+        .style('opacity',opacity);
+
+      d3.selectAll('.Oregon')
+        .style('opacity',1);
+
+      if(fade_in){displayBox(g,right)}
+      else{removeBox()};
+    }
   }
 
   //shows the box
@@ -874,7 +868,8 @@ function slopeGraphBuilder(){
     // if on the right, use right coord, else use left
     var yRaw = (right)? y(d.right_coord) : y(d.left_coord);
     // move the box along with the graph, but dont move it off the top of window
-    var yCoord = (yRaw < 100)? yRaw : yRaw-100;
+    // var yCoord = (yRaw < 100)? yRaw : yRaw-100;
+    var yCoord = yRaw-25;
     // round to 2 decimals
     var dv = Math.round((rVal-lVal)*100)/100;
     // if the difference is a positive value, add a +
@@ -893,11 +888,11 @@ function slopeGraphBuilder(){
     d3.select("#num_left").text(lVal);
     d3.select("#num_right").text(rVal);
     // shows the inforbox
-    d3.select("#infobox").style("display", "block");
+    d3.select("#infobox").transition().delay(50).duration(500).ease('poly',19).style("opacity", 1);
   } 
   //hides the box again 
   function removeBox() 
   { 
-      d3.select("#infobox").style("display", "none"); 
+      d3.select("#infobox").style("opacity", 0); 
   } 
 }
