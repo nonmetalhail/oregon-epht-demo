@@ -171,103 +171,23 @@
       }
     },
     "Bladder":{
-      "tid":"",
-      "table": "",
+      "tid":"18XTARadNLnV-fTXneimHNPcrjLqafC4_BzXMaxc",
+      "table": "https://www.google.com/fusiontables/embedviz?viz=GVIZ&t=TABLE&containerId=gviz_canvas&q=select+col0%2C+col1%2C+col2%2C+col3%2C+col4%2C+col5%2C+col6%2C+col7%2C+col8%2C+col9%2C+col10%2C+col11+from+1SU79AZUxOaz-irX_42zAhXx7IerK34essW5S0uw",
       "title":"Baldder Cancer (all age groups): Age-adjusted rate per 100,000 population",
       "years":{
-        "2006":{
-          "chart": "",
-          "map": ""
-        },
-        "2005":{
-          "chart": "",
-          "map": ""
-        },
-        "2004":{
-          "chart": "",
-          "map": ""
-        },
-        "2003":{
-          "chart": "",
-          "map": ""
-        },
-        "2002":{
-          "chart": "",
-          "map": ""
-        },
-        "2001":{
-          "chart": "",
-          "map": ""
-        },
-        "2000":{
-          "chart": "",
-          "map": ""
-        },
-        "1999":{
-          "chart": "",
-          "map": ""
-        },
-        "1998":{
-          "chart": "",
-          "map": ""
-        },
-        "1997":{
-          "chart": "",
-          "map": ""
-        },
-        "1996":{
-          "chart": "",
+        "All":{
+          "chart":"https://www.google.com/fusiontables/embedviz?containerId=gviz_canvas&q=select+col3%2C+col0+from+18XTARadNLnV-fTXneimHNPcrjLqafC4_BzXMaxc&viz=GVIZ&t=COLUMN&gco_hAxis=%7B%22viewWindowMode%22%3A%22pretty%22%2C%22viewWindow%22%3A%7B%7D%2C%22useFormatFromData%22%3Atrue%2C%22title%22%3A%22Year%22%2C%22slantedText%22%3Atrue%2C%22format%22%3A%22%22%7D&gco_vAxes=%5B%7B%22title%22%3A%22Rate%2F10%2C000%22%2C%22minValue%22%3A0%2C%22maxValue%22%3Anull%2C%22viewWindowMode%22%3A%22pretty%22%2C%22viewWindow%22%3A%7B%22max%22%3Anull%2C%22min%22%3A0%7D%2C%22useFormatFromData%22%3Atrue%7D%2C%7B%22viewWindowMode%22%3A%22pretty%22%2C%22viewWindow%22%3A%7B%7D%2C%22useFormatFromData%22%3Atrue%7D%5D&gco_isStacked=false&gco_animation=%7B%22duration%22%3A500%7D&gco_booleanRole=certainty&gco_vAxis=%7B%22format%22%3A%22%22%7D&width=500&height=300",
           "map": ""
         }
       }
     },
     "Brain & CNS":{
-      "tid":"",
-      "table": "",
+      "tid":"14Qd3LZvAwif8l4wA5zUJ5zz6MX2pS457WGHmi7I",
+      "table": "https://www.google.com/fusiontables/embedviz?viz=GVIZ&t=TABLE&containerId=gviz_canvas&q=select+col11%2C+col1%2C+col0%2C+col3%2C+col2%2C+col6%2C+col7%2C+col4%2C+col5%2C+col9%2C+col10%2C+col8+from+18jsIOUHIobXBaCJ0kPM-kVqQthBFd0xmWv7zvI0",
       "title":"Brain & CNS Cancer (all age groups): Age-adjusted rate per 100,000 population",
       "years":{
-        "2006":{
-          "chart": "",
-          "map": ""
-        },
-        "2005":{
-          "chart": "",
-          "map": ""
-        },
-        "2004":{
-          "chart": "",
-          "map": ""
-        },
-        "2003":{
-          "chart": "",
-          "map": ""
-        },
-        "2002":{
-          "chart": "",
-          "map": ""
-        },
-        "2001":{
-          "chart": "",
-          "map": ""
-        },
-        "2000":{
-          "chart": "",
-          "map": ""
-        },
-        "1999":{
-          "chart": "",
-          "map": ""
-        },
-        "1998":{
-          "chart": "",
-          "map": ""
-        },
-        "1997":{
-          "chart": "",
-          "map": ""
-        },
-        "1996":{
-          "chart": "",
+        "All":{
+          "chart": "https://www.google.com/fusiontables/embedviz?containerId=gviz_canvas&q=select+col3%2C+col0+from+14Qd3LZvAwif8l4wA5zUJ5zz6MX2pS457WGHmi7I&viz=GVIZ&t=COLUMN&gco_hAxis=%7B%22viewWindowMode%22%3A%22pretty%22%2C%22viewWindow%22%3A%7B%7D%2C%22useFormatFromData%22%3Atrue%2C%22title%22%3A%22Year%22%2C%22slantedText%22%3Atrue%2C%22format%22%3A%22%22%7D&gco_vAxes=%5B%7B%22title%22%3A%22Rate%2F10%2C000%22%2C%22minValue%22%3A0%2C%22maxValue%22%3Anull%2C%22viewWindowMode%22%3A%22pretty%22%2C%22viewWindow%22%3A%7B%22max%22%3Anull%2C%22min%22%3A0%7D%2C%22useFormatFromData%22%3Atrue%7D%2C%7B%22viewWindowMode%22%3A%22pretty%22%2C%22viewWindow%22%3A%7B%7D%2C%22useFormatFromData%22%3Atrue%7D%5D&gco_isStacked=false&gco_animation=%7B%22duration%22%3A500%7D&gco_booleanRole=certainty&gco_vAxis=%7B%22format%22%3A%22%22%7D&width=500&height=300",
           "map": ""
         }
       }
@@ -277,47 +197,7 @@
       "table": "",
       "title":"Breast Cancer (all age groups): Age-adjusted rate per 100,000 population",
       "years":{
-        "2006":{
-          "chart": "",
-          "map": ""
-        },
-        "2005":{
-          "chart": "",
-          "map": ""
-        },
-        "2004":{
-          "chart": "",
-          "map": ""
-        },
-        "2003":{
-          "chart": "",
-          "map": ""
-        },
-        "2002":{
-          "chart": "",
-          "map": ""
-        },
-        "2001":{
-          "chart": "",
-          "map": ""
-        },
-        "2000":{
-          "chart": "",
-          "map": ""
-        },
-        "1999":{
-          "chart": "",
-          "map": ""
-        },
-        "1998":{
-          "chart": "",
-          "map": ""
-        },
-        "1997":{
-          "chart": "",
-          "map": ""
-        },
-        "1996":{
+        "All":{
           "chart": "",
           "map": ""
         }
@@ -328,47 +208,7 @@
       "table": "",
       "title":"Breast Cancer (under 50 years old): Age-adjusted rate per 100,000 population",
       "years":{
-        "2006":{
-          "chart": "",
-          "map": ""
-        },
-        "2005":{
-          "chart": "",
-          "map": ""
-        },
-        "2004":{
-          "chart": "",
-          "map": ""
-        },
-        "2003":{
-          "chart": "",
-          "map": ""
-        },
-        "2002":{
-          "chart": "",
-          "map": ""
-        },
-        "2001":{
-          "chart": "",
-          "map": ""
-        },
-        "2000":{
-          "chart": "",
-          "map": ""
-        },
-        "1999":{
-          "chart": "",
-          "map": ""
-        },
-        "1998":{
-          "chart": "",
-          "map": ""
-        },
-        "1997":{
-          "chart": "",
-          "map": ""
-        },
-        "1996":{
+        "All":{
           "chart": "",
           "map": ""
         }
@@ -379,47 +219,7 @@
       "table": "",
       "title":"Breast Cancer (50 years old and older): Age-adjusted rate per 100,000 population",
       "years":{
-        "2006":{
-          "chart": "",
-          "map": ""
-        },
-        "2005":{
-          "chart": "",
-          "map": ""
-        },
-        "2004":{
-          "chart": "",
-          "map": ""
-        },
-        "2003":{
-          "chart": "",
-          "map": ""
-        },
-        "2002":{
-          "chart": "",
-          "map": ""
-        },
-        "2001":{
-          "chart": "",
-          "map": ""
-        },
-        "2000":{
-          "chart": "",
-          "map": ""
-        },
-        "1999":{
-          "chart": "",
-          "map": ""
-        },
-        "1998":{
-          "chart": "",
-          "map": ""
-        },
-        "1997":{
-          "chart": "",
-          "map": ""
-        },
-        "1996":{
+        "All":{
           "chart": "",
           "map": ""
         }
@@ -430,47 +230,7 @@
       "table": "",
       "title":"Leukemia Cancer (all age groups): Age-adjusted rate per 100,000 population",
       "years":{
-        "2006":{
-          "chart": "",
-          "map": ""
-        },
-        "2005":{
-          "chart": "",
-          "map": ""
-        },
-        "2004":{
-          "chart": "",
-          "map": ""
-        },
-        "2003":{
-          "chart": "",
-          "map": ""
-        },
-        "2002":{
-          "chart": "",
-          "map": ""
-        },
-        "2001":{
-          "chart": "",
-          "map": ""
-        },
-        "2000":{
-          "chart": "",
-          "map": ""
-        },
-        "1999":{
-          "chart": "",
-          "map": ""
-        },
-        "1998":{
-          "chart": "",
-          "map": ""
-        },
-        "1997":{
-          "chart": "",
-          "map": ""
-        },
-        "1996":{
+        "All":{
           "chart": "",
           "map": ""
         }
@@ -481,47 +241,7 @@
       "table": "",
       "title":"Leukemia-Lymphocytic Cancer (all age groups): Age-adjusted rate per 100,000 population",
       "years":{
-        "2006":{
-          "chart": "",
-          "map": ""
-        },
-        "2005":{
-          "chart": "",
-          "map": ""
-        },
-        "2004":{
-          "chart": "",
-          "map": ""
-        },
-        "2003":{
-          "chart": "",
-          "map": ""
-        },
-        "2002":{
-          "chart": "",
-          "map": ""
-        },
-        "2001":{
-          "chart": "",
-          "map": ""
-        },
-        "2000":{
-          "chart": "",
-          "map": ""
-        },
-        "1999":{
-          "chart": "",
-          "map": ""
-        },
-        "1998":{
-          "chart": "",
-          "map": ""
-        },
-        "1997":{
-          "chart": "",
-          "map": ""
-        },
-        "1996":{
+        "All":{
           "chart": "",
           "map": ""
         }
@@ -532,47 +252,7 @@
       "table": "",
       "title":"Leukemia-Myeloid Cancer (all age groups): Age-adjusted rate per 100,000 population",
       "years":{
-        "2006":{
-          "chart": "",
-          "map": ""
-        },
-        "2005":{
-          "chart": "",
-          "map": ""
-        },
-        "2004":{
-          "chart": "",
-          "map": ""
-        },
-        "2003":{
-          "chart": "",
-          "map": ""
-        },
-        "2002":{
-          "chart": "",
-          "map": ""
-        },
-        "2001":{
-          "chart": "",
-          "map": ""
-        },
-        "2000":{
-          "chart": "",
-          "map": ""
-        },
-        "1999":{
-          "chart": "",
-          "map": ""
-        },
-        "1998":{
-          "chart": "",
-          "map": ""
-        },
-        "1997":{
-          "chart": "",
-          "map": ""
-        },
-        "1996":{
+        "All":{
           "chart": "",
           "map": ""
         }
@@ -583,47 +263,7 @@
       "table": "",
       "title":"Lung & Bronchus Cancer (all age groups): Age-adjusted rate per 100,000 population",
       "years":{
-        "2006":{
-          "chart": "",
-          "map": ""
-        },
-        "2005":{
-          "chart": "",
-          "map": ""
-        },
-        "2004":{
-          "chart": "",
-          "map": ""
-        },
-        "2003":{
-          "chart": "",
-          "map": ""
-        },
-        "2002":{
-          "chart": "",
-          "map": ""
-        },
-        "2001":{
-          "chart": "",
-          "map": ""
-        },
-        "2000":{
-          "chart": "",
-          "map": ""
-        },
-        "1999":{
-          "chart": "",
-          "map": ""
-        },
-        "1998":{
-          "chart": "",
-          "map": ""
-        },
-        "1997":{
-          "chart": "",
-          "map": ""
-        },
-        "1996":{
+        "All":{
           "chart": "",
           "map": ""
         }
@@ -634,47 +274,7 @@
       "table": "",
       "title":"Melanoma Cancer (all age groups): Age-adjusted rate per 100,000 population",
       "years":{
-        "2006":{
-          "chart": "",
-          "map": ""
-        },
-        "2005":{
-          "chart": "",
-          "map": ""
-        },
-        "2004":{
-          "chart": "",
-          "map": ""
-        },
-        "2003":{
-          "chart": "",
-          "map": ""
-        },
-        "2002":{
-          "chart": "",
-          "map": ""
-        },
-        "2001":{
-          "chart": "",
-          "map": ""
-        },
-        "2000":{
-          "chart": "",
-          "map": ""
-        },
-        "1999":{
-          "chart": "",
-          "map": ""
-        },
-        "1998":{
-          "chart": "",
-          "map": ""
-        },
-        "1997":{
-          "chart": "",
-          "map": ""
-        },
-        "1996":{
+        "All":{
           "chart": "",
           "map": ""
         }
@@ -685,47 +285,7 @@
       "table": "",
       "title":"Mesotheloma Cancer (all age groups): Age-adjusted rate per 100,000 population",
       "years":{
-        "2006":{
-          "chart": "",
-          "map": ""
-        },
-        "2005":{
-          "chart": "",
-          "map": ""
-        },
-        "2004":{
-          "chart": "",
-          "map": ""
-        },
-        "2003":{
-          "chart": "",
-          "map": ""
-        },
-        "2002":{
-          "chart": "",
-          "map": ""
-        },
-        "2001":{
-          "chart": "",
-          "map": ""
-        },
-        "2000":{
-          "chart": "",
-          "map": ""
-        },
-        "1999":{
-          "chart": "",
-          "map": ""
-        },
-        "1998":{
-          "chart": "",
-          "map": ""
-        },
-        "1997":{
-          "chart": "",
-          "map": ""
-        },
-        "1996":{
+        "All":{
           "chart": "",
           "map": ""
         }
@@ -736,47 +296,7 @@
       "table": "",
       "title":"Non-Hodgkin's Lymphoma Cancer (all age groups): Age-adjusted rate per 100,000 population",
       "years":{
-        "2006":{
-          "chart": "",
-          "map": ""
-        },
-        "2005":{
-          "chart": "",
-          "map": ""
-        },
-        "2004":{
-          "chart": "",
-          "map": ""
-        },
-        "2003":{
-          "chart": "",
-          "map": ""
-        },
-        "2002":{
-          "chart": "",
-          "map": ""
-        },
-        "2001":{
-          "chart": "",
-          "map": ""
-        },
-        "2000":{
-          "chart": "",
-          "map": ""
-        },
-        "1999":{
-          "chart": "",
-          "map": ""
-        },
-        "1998":{
-          "chart": "",
-          "map": ""
-        },
-        "1997":{
-          "chart": "",
-          "map": ""
-        },
-        "1996":{
+        "All":{
           "chart": "",
           "map": ""
         }
@@ -787,47 +307,7 @@
       "table": "",
       "title":"Thyroid Cancer (all age groups): Age-adjusted rate per 100,000 population",
       "years":{
-        "2006":{
-          "chart": "",
-          "map": ""
-        },
-        "2005":{
-          "chart": "",
-          "map": ""
-        },
-        "2004":{
-          "chart": "",
-          "map": ""
-        },
-        "2003":{
-          "chart": "",
-          "map": ""
-        },
-        "2002":{
-          "chart": "",
-          "map": ""
-        },
-        "2001":{
-          "chart": "",
-          "map": ""
-        },
-        "2000":{
-          "chart": "",
-          "map": ""
-        },
-        "1999":{
-          "chart": "",
-          "map": ""
-        },
-        "1998":{
-          "chart": "",
-          "map": ""
-        },
-        "1997":{
-          "chart": "",
-          "map": ""
-        },
-        "1996":{
+        "All":{
           "chart": "",
           "map": ""
         }

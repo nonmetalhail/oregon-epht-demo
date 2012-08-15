@@ -114,3 +114,40 @@ a:hover{
   float:right;
   margin-bottom:10px;
 }
+
+#legend{
+  background: white;
+  width:490px;
+  height: 20px;
+  margin: 0 0px;
+  position: absolute;
+  font: 11px arial,sans-serif ;
+  z-index:0;
+  top:500px;
+  padding: 7px 0 0 10px;
+
+}
+
+.legend_box{
+  width:10px;
+  height:10px;
+  display:inline;
+  z-index:1;
+  position: absolute;
+  top: 10px;
+}
+#legend_min{
+  background: #c0cedd;
+}
+
+#legend_avg{
+  background: #709ec9;
+}
+
+#legend_max{
+  background: #1a5788;
+}
+
+.legend_text{
+  margin: 10px 10px 5px 15px; 
+}
