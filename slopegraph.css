@@ -44,14 +44,14 @@ h4{
   
   position: absolute;
   top:50px;
-  right:-100px;
+  right:-200px;
   z-index:10;
-
-  display:none;
+  opacity: 0;
+  /*display:none;*/
 }
 
 .info_left{
-  left:-100px;
+  left:-200px;
 }
 
 .num{
