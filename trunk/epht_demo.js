@@ -44,7 +44,7 @@ $(document).ready(function(){
     // add listener to sub-sets
     $('#data_sets').live('change',function(){
       if($('#disease_sets').attr('value') == 'Cancer'){
-        var tempYears = data_sets[this.value][$('#data_sets').attr('value')]['years'];
+        var tempYears = data_sets[$('#disease_sets').attr('value')][$('#data_sets').attr('value')]['years'];
         $('#years').children().remove();
         var yearSort = [];
         for(var year in tempYears){
