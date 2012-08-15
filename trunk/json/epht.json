@@ -193,122 +193,111 @@
       }
     },
     "Breast":{
-      "tid":"",
-      "table": "",
+      "tid":"1yuV2Gjx8Aun4MEmGvYSCeuVKk20hqX1PlaZYF_s",
+      "table": "https://www.google.com/fusiontables/embedviz?viz=GVIZ&t=TABLE&containerId=gviz_canvas&q=select+col0%2C+col1%2C+col2%2C+col3%2C+col4%2C+col5%2C+col6%2C+col7%2C+col8%2C+col9%2C+col10%2C+col11+from+1yuV2Gjx8Aun4MEmGvYSCeuVKk20hqX1PlaZYF_s",
       "title":"Breast Cancer (all age groups): Age-adjusted rate per 100,000 population",
       "years":{
         "All":{
-          "chart": "",
+          "chart": "https://www.google.com/fusiontables/embedviz?containerId=gviz_canvas&q=select+col3%2C+col0+from+1lGjNZ37pk29_wrYh7OXKVlFnzEfes8zSdl8VCa4&viz=GVIZ&t=COLUMN&gco_hAxis=%7B%22viewWindowMode%22%3A%22pretty%22%2C%22viewWindow%22%3A%7B%7D%2C%22useFormatFromData%22%3Atrue%2C%22title%22%3A%22Year%22%2C%22slantedText%22%3Atrue%2C%22format%22%3A%22%22%7D&gco_vAxes=%5B%7B%22title%22%3A%22Rate%2F10%2C000%22%2C%22minValue%22%3A0%2C%22maxValue%22%3Anull%2C%22viewWindowMode%22%3A%22pretty%22%2C%22viewWindow%22%3A%7B%22max%22%3Anull%2C%22min%22%3A0%7D%2C%22useFormatFromData%22%3Atrue%7D%2C%7B%22viewWindowMode%22%3A%22pretty%22%2C%22viewWindow%22%3A%7B%7D%2C%22useFormatFromData%22%3Atrue%7D%5D&gco_isStacked=false&gco_animation=%7B%22duration%22%3A500%7D&gco_booleanRole=certainty&gco_vAxis=%7B%22format%22%3A%22%22%7D&width=500&height=300",
           "map": ""
         }
       }
     },
     "Breast < 50yr":{
-      "tid":"",
-      "table": "",
+      "tid":"1XvfYTnq3IPqMomv4K8a6osXgCfmrj-0Ee-FoSH8",
+      "table": "https://www.google.com/fusiontables/embedviz?viz=GVIZ&t=TABLE&containerId=gviz_canvas&q=select+col11%2C+col1%2C+col0%2C+col3%2C+col2%2C+col6%2C+col7%2C+col4%2C+col5%2C+col9%2C+col10%2C+col8+from+1XvfYTnq3IPqMomv4K8a6osXgCfmrj-0Ee-FoSH8",
       "title":"Breast Cancer (under 50 years old): Age-adjusted rate per 100,000 population",
       "years":{
         "All":{
-          "chart": "",
-          "map": ""
-        }
-      }
-    },
-    "Breast >=50yr":{
-      "tid":"",
-      "table": "",
-      "title":"Breast Cancer (50 years old and older): Age-adjusted rate per 100,000 population",
-      "years":{
-        "All":{
-          "chart": "",
+          "chart": "https://www.google.com/fusiontables/embedviz?containerId=gviz_canvas&q=select+col3%2C+col0+from+1V1-YvvG2KX3xXTluhVuyD1tZOWtHstDZvJMadS4&viz=GVIZ&t=COLUMN&gco_hAxis=%7B%22viewWindowMode%22%3A%22pretty%22%2C%22viewWindow%22%3A%7B%7D%2C%22useFormatFromData%22%3Atrue%2C%22title%22%3A%22Year%22%2C%22slantedText%22%3Atrue%2C%22format%22%3A%22%22%7D&gco_vAxes=%5B%7B%22title%22%3A%22Rate%2F10%2C000%22%2C%22minValue%22%3A0%2C%22maxValue%22%3Anull%2C%22viewWindowMode%22%3A%22pretty%22%2C%22viewWindow%22%3A%7B%22max%22%3Anull%2C%22min%22%3A0%7D%2C%22useFormatFromData%22%3Atrue%7D%2C%7B%22viewWindowMode%22%3A%22pretty%22%2C%22viewWindow%22%3A%7B%7D%2C%22useFormatFromData%22%3Atrue%7D%5D&gco_isStacked=false&gco_animation=%7B%22duration%22%3A500%7D&gco_booleanRole=certainty&gco_vAxis=%7B%22format%22%3A%22%22%7D&width=500&height=300",
           "map": ""
         }
       }
     },
     "Leukemia":{
-      "tid":"",
-      "table": "",
+      "tid":"1ZwtDsBGVX6_Dgz2NPkwLmzL0S7dDxSkoe0iup5k",
+      "table": "https://www.google.com/fusiontables/embedviz?viz=GVIZ&t=TABLE&containerId=gviz_canvas&q=select+col0%2C+col1%2C+col2%2C+col3%2C+col4%2C+col5%2C+col6%2C+col7%2C+col8%2C+col9%2C+col10%2C+col11+from+1ZwtDsBGVX6_Dgz2NPkwLmzL0S7dDxSkoe0iup5k",
       "title":"Leukemia Cancer (all age groups): Age-adjusted rate per 100,000 population",
       "years":{
         "All":{
-          "chart": "",
+          "chart": "https://www.google.com/fusiontables/embedviz?containerId=gviz_canvas&q=select+col3%2C+col0+from+1Mn1MUVbZsAFhcJKuVrV-MQjD-DKyA1xFIn9XRjc&viz=GVIZ&t=COLUMN&gco_hAxis=%7B%22viewWindowMode%22%3A%22pretty%22%2C%22viewWindow%22%3A%7B%7D%2C%22useFormatFromData%22%3Atrue%2C%22title%22%3A%22Year%22%2C%22slantedText%22%3Atrue%2C%22format%22%3A%22%22%7D&gco_vAxes=%5B%7B%22title%22%3A%22Rate%2F10%2C000%22%2C%22minValue%22%3A0%2C%22maxValue%22%3Anull%2C%22viewWindowMode%22%3A%22pretty%22%2C%22viewWindow%22%3A%7B%22max%22%3Anull%2C%22min%22%3A0%7D%2C%22useFormatFromData%22%3Atrue%7D%2C%7B%22viewWindowMode%22%3A%22pretty%22%2C%22viewWindow%22%3A%7B%7D%2C%22useFormatFromData%22%3Atrue%7D%5D&gco_isStacked=false&gco_animation=%7B%22duration%22%3A500%7D&gco_booleanRole=certainty&gco_vAxis=%7B%22format%22%3A%22%22%7D&width=500&height=300",
           "map": ""
         }
       }
     },
     "Leukemia-Lymphocytic":{
-      "tid":"",
-      "table": "",
+      "tid":"1ddKPqR32k4A0QVVaIS2gtRzRWA7-QOq_YwVVnoQ",
+      "table": "https://www.google.com/fusiontables/embedviz?viz=GVIZ&t=TABLE&containerId=gviz_canvas&q=select+col0%2C+col1%2C+col2%2C+col3%2C+col4%2C+col5%2C+col6%2C+col7%2C+col8%2C+col9%2C+col10%2C+col11+from+1ddKPqR32k4A0QVVaIS2gtRzRWA7-QOq_YwVVnoQ",
       "title":"Leukemia-Lymphocytic Cancer (all age groups): Age-adjusted rate per 100,000 population",
       "years":{
         "All":{
-          "chart": "",
+          "chart": "https://www.google.com/fusiontables/embedviz?containerId=gviz_canvas&q=select+col3%2C+col0+from+1L_WdxZtVdvM7oBvnkcyYEmSfIJYryYwyGC1Dqng&viz=GVIZ&t=COLUMN&gco_hAxis=%7B%22viewWindowMode%22%3A%22pretty%22%2C%22viewWindow%22%3A%7B%7D%2C%22useFormatFromData%22%3Atrue%2C%22title%22%3A%22Year%22%2C%22slantedText%22%3Atrue%2C%22format%22%3A%22%22%7D&gco_vAxes=%5B%7B%22title%22%3A%22Rate%2F10%2C000%22%2C%22minValue%22%3A0%2C%22maxValue%22%3Anull%2C%22viewWindowMode%22%3A%22pretty%22%2C%22viewWindow%22%3A%7B%22max%22%3Anull%2C%22min%22%3A0%7D%2C%22useFormatFromData%22%3Atrue%7D%2C%7B%22viewWindowMode%22%3A%22pretty%22%2C%22viewWindow%22%3A%7B%7D%2C%22useFormatFromData%22%3Atrue%7D%5D&gco_isStacked=false&gco_animation=%7B%22duration%22%3A500%7D&gco_booleanRole=certainty&gco_vAxis=%7B%22format%22%3A%22%22%7D&width=500&height=300",
           "map": ""
         }
       }
     },
     "Leukemia-Myeloid":{
-      "tid":"",
-      "table": "",
+      "tid":"1v4z8lSe9a32JcLJoP3ryL2CavuSlPJcfvVdmgv4",
+      "table": "https://www.google.com/fusiontables/embedviz?viz=GVIZ&t=TABLE&containerId=gviz_canvas&q=select+col0%2C+col1%2C+col2%2C+col3%2C+col4%2C+col5%2C+col6%2C+col7%2C+col8%2C+col9%2C+col10%2C+col11+from+1v4z8lSe9a32JcLJoP3ryL2CavuSlPJcfvVdmgv4",
       "title":"Leukemia-Myeloid Cancer (all age groups): Age-adjusted rate per 100,000 population",
       "years":{
         "All":{
-          "chart": "",
+          "chart": "https://www.google.com/fusiontables/embedviz?containerId=gviz_canvas&q=select+col3%2C+col0+from+1hqbKZUtfO3s3WBH2hljFyP0uXVYRLq00DLe5mWA&viz=GVIZ&t=COLUMN&gco_hAxis=%7B%22viewWindowMode%22%3A%22pretty%22%2C%22viewWindow%22%3A%7B%7D%2C%22useFormatFromData%22%3Atrue%2C%22title%22%3A%22Year%22%2C%22slantedText%22%3Atrue%2C%22format%22%3A%22%22%7D&gco_vAxes=%5B%7B%22title%22%3A%22Rate%2F10%2C000%22%2C%22minValue%22%3A0%2C%22maxValue%22%3Anull%2C%22viewWindowMode%22%3A%22pretty%22%2C%22viewWindow%22%3A%7B%22max%22%3Anull%2C%22min%22%3A0%7D%2C%22useFormatFromData%22%3Atrue%7D%2C%7B%22viewWindowMode%22%3A%22pretty%22%2C%22viewWindow%22%3A%7B%7D%2C%22useFormatFromData%22%3Atrue%7D%5D&gco_isStacked=false&gco_animation=%7B%22duration%22%3A500%7D&gco_booleanRole=certainty&gco_vAxis=%7B%22format%22%3A%22%22%7D&width=500&height=300",
           "map": ""
         }
       }
     },
     "Lung & Bronchus":{
-      "tid":"",
-      "table": "",
+      "tid":"1itp5cIZvGSkGT0vCldYXzZ79isI-CGP2UgFodCg",
+      "table": "https://www.google.com/fusiontables/embedviz?viz=GVIZ&t=TABLE&containerId=gviz_canvas&q=select+col0%2C+col1%2C+col2%2C+col3%2C+col4%2C+col5%2C+col6%2C+col7%2C+col8%2C+col9%2C+col10%2C+col11+from+1itp5cIZvGSkGT0vCldYXzZ79isI-CGP2UgFodCg",
       "title":"Lung & Bronchus Cancer (all age groups): Age-adjusted rate per 100,000 population",
       "years":{
         "All":{
-          "chart": "",
+          "chart": "https://www.google.com/fusiontables/embedviz?containerId=gviz_canvas&q=select+col3%2C+col0+from+19XbIh6ileA6YiUtSQuZAxUgF7VZHNVGtDJxSiDs&viz=GVIZ&t=COLUMN&gco_hAxis=%7B%22viewWindowMode%22%3A%22pretty%22%2C%22viewWindow%22%3A%7B%7D%2C%22useFormatFromData%22%3Atrue%2C%22title%22%3A%22Year%22%2C%22slantedText%22%3Atrue%2C%22format%22%3A%22%22%7D&gco_vAxes=%5B%7B%22title%22%3A%22Rate%2F10%2C000%22%2C%22minValue%22%3A0%2C%22maxValue%22%3Anull%2C%22viewWindowMode%22%3A%22pretty%22%2C%22viewWindow%22%3A%7B%22max%22%3Anull%2C%22min%22%3A0%7D%2C%22useFormatFromData%22%3Atrue%7D%2C%7B%22viewWindowMode%22%3A%22pretty%22%2C%22viewWindow%22%3A%7B%7D%2C%22useFormatFromData%22%3Atrue%7D%5D&gco_isStacked=false&gco_animation=%7B%22duration%22%3A500%7D&gco_booleanRole=certainty&gco_vAxis=%7B%22format%22%3A%22%22%7D&width=500&height=300",
           "map": ""
         }
       }
     },
     "Melanoma":{
-      "tid":"",
-      "table": "",
+      "tid":"1EMKfr26Ac6cMTR64bWr280fUlA7nxNtqIa6SOew",
+      "table": "https://www.google.com/fusiontables/embedviz?viz=GVIZ&t=TABLE&containerId=gviz_canvas&q=select+col0%2C+col1%2C+col2%2C+col3%2C+col4%2C+col5%2C+col6%2C+col7%2C+col8%2C+col9%2C+col10%2C+col11+from+1EMKfr26Ac6cMTR64bWr280fUlA7nxNtqIa6SOew",
       "title":"Melanoma Cancer (all age groups): Age-adjusted rate per 100,000 population",
       "years":{
         "All":{
-          "chart": "",
+          "chart": "https://www.google.com/fusiontables/embedviz?containerId=gviz_canvas&q=select+col3%2C+col0+from+1bf6QAFt2TeyP4OYtbAQBJzo5bdU9EdscCLQohqc&viz=GVIZ&t=COLUMN&gco_hAxis=%7B%22viewWindowMode%22%3A%22pretty%22%2C%22viewWindow%22%3A%7B%7D%2C%22useFormatFromData%22%3Atrue%2C%22title%22%3A%22Year%22%2C%22slantedText%22%3Atrue%2C%22format%22%3A%22%22%7D&gco_vAxes=%5B%7B%22title%22%3A%22Rate%2F10%2C000%22%2C%22minValue%22%3A0%2C%22maxValue%22%3Anull%2C%22viewWindowMode%22%3A%22pretty%22%2C%22viewWindow%22%3A%7B%22max%22%3Anull%2C%22min%22%3A0%7D%2C%22useFormatFromData%22%3Atrue%7D%2C%7B%22viewWindowMode%22%3A%22pretty%22%2C%22viewWindow%22%3A%7B%7D%2C%22useFormatFromData%22%3Atrue%7D%5D&gco_isStacked=false&gco_animation=%7B%22duration%22%3A500%7D&gco_booleanRole=certainty&gco_vAxis=%7B%22format%22%3A%22%22%7D&width=500&height=300",
           "map": ""
         }
       }
     },
     "Mesotheloma":{
-      "tid":"",
-      "table": "",
+      "tid":"1jxxQs6lhZjWafq5kpvyzaa1fnbGKbRE-4FEuPfc",
+      "table": "https://www.google.com/fusiontables/embedviz?viz=GVIZ&t=TABLE&containerId=gviz_canvas&q=select+col0%2C+col1%2C+col2%2C+col3%2C+col4%2C+col5%2C+col6%2C+col7%2C+col8%2C+col9%2C+col10%2C+col11+from+1jxxQs6lhZjWafq5kpvyzaa1fnbGKbRE-4FEuPfc",
       "title":"Mesotheloma Cancer (all age groups): Age-adjusted rate per 100,000 population",
       "years":{
         "All":{
-          "chart": "",
+          "chart": "https://www.google.com/fusiontables/embedviz?containerId=gviz_canvas&q=select+col3%2C+col0+from+1HlgGVBcJ2R0CRdw414jX6TWM0RvV0Lwp2RxwUpg&viz=GVIZ&t=COLUMN&gco_hAxis=%7B%22viewWindowMode%22%3A%22pretty%22%2C%22viewWindow%22%3A%7B%7D%2C%22useFormatFromData%22%3Atrue%2C%22title%22%3A%22Year%22%2C%22slantedText%22%3Atrue%2C%22format%22%3A%22%22%7D&gco_vAxes=%5B%7B%22title%22%3A%22Rate%2F10%2C000%22%2C%22minValue%22%3A0%2C%22maxValue%22%3Anull%2C%22viewWindowMode%22%3A%22pretty%22%2C%22viewWindow%22%3A%7B%22max%22%3Anull%2C%22min%22%3A0%7D%2C%22useFormatFromData%22%3Atrue%7D%2C%7B%22viewWindowMode%22%3A%22pretty%22%2C%22viewWindow%22%3A%7B%7D%2C%22useFormatFromData%22%3Atrue%7D%5D&gco_isStacked=false&gco_animation=%7B%22duration%22%3A500%7D&gco_booleanRole=certainty&gco_vAxis=%7B%22format%22%3A%22%22%7D&width=500&height=300",
           "map": ""
         }
       }
     },
     "Non-Hodgkin's Lymphoma":{
-      "tid":"",
-      "table": "",
+      "tid":"1FUrYJSoM9fw-MuCklo1ckq0-eBGS47mQ50aceeA",
+      "table": "https://www.google.com/fusiontables/embedviz?viz=GVIZ&t=TABLE&containerId=gviz_canvas&q=select+col0%2C+col1%2C+col2%2C+col3%2C+col4%2C+col5%2C+col6%2C+col7%2C+col8%2C+col9%2C+col10%2C+col11+from+1FUrYJSoM9fw-MuCklo1ckq0-eBGS47mQ50aceeA",
       "title":"Non-Hodgkin's Lymphoma Cancer (all age groups): Age-adjusted rate per 100,000 population",
       "years":{
         "All":{
-          "chart": "",
+          "chart": "https://www.google.com/fusiontables/embedviz?containerId=gviz_canvas&q=select+col3%2C+col0+from+1-zlsc5dhg6v-E8GIDf82rwq0hlF7UOf0gRjIqMA&viz=GVIZ&t=COLUMN&gco_hAxis=%7B%22viewWindowMode%22%3A%22pretty%22%2C%22viewWindow%22%3A%7B%7D%2C%22useFormatFromData%22%3Atrue%2C%22title%22%3A%22Year%22%2C%22slantedText%22%3Atrue%2C%22format%22%3A%22%22%7D&gco_vAxes=%5B%7B%22title%22%3A%22Rate%2F10%2C000%22%2C%22minValue%22%3A0%2C%22maxValue%22%3Anull%2C%22viewWindowMode%22%3A%22pretty%22%2C%22viewWindow%22%3A%7B%22max%22%3Anull%2C%22min%22%3A0%7D%2C%22useFormatFromData%22%3Atrue%7D%2C%7B%22viewWindowMode%22%3A%22pretty%22%2C%22viewWindow%22%3A%7B%7D%2C%22useFormatFromData%22%3Atrue%7D%5D&gco_isStacked=false&gco_animation=%7B%22duration%22%3A500%7D&gco_booleanRole=certainty&gco_vAxis=%7B%22format%22%3A%22%22%7D&width=500&height=300",
           "map": ""
         }
       }
     },
     "Thyroid":{
-      "tid":"",
-      "table": "",
+      "tid":"1l_Bna4w9yBTQ_Rwhnl53KhBkuJG4lFBxVoQ0ZBg",
+      "table": "https://www.google.com/fusiontables/embedviz?viz=GVIZ&t=TABLE&containerId=gviz_canvas&q=select+col0%2C+col1%2C+col2%2C+col3%2C+col4%2C+col5%2C+col6%2C+col7%2C+col8%2C+col9%2C+col10%2C+col11+from+1l_Bna4w9yBTQ_Rwhnl53KhBkuJG4lFBxVoQ0ZBg",
       "title":"Thyroid Cancer (all age groups): Age-adjusted rate per 100,000 population",
       "years":{
         "All":{
-          "chart": "",
+          "chart": "https://www.google.com/fusiontables/embedviz?containerId=gviz_canvas&q=select+col3%2C+col0+from+1g1VzYPmjHmQosezdpSkYO3huD6y6dHpr_KRDiXk&viz=GVIZ&t=COLUMN&gco_hAxis=%7B%22viewWindowMode%22%3A%22pretty%22%2C%22viewWindow%22%3A%7B%7D%2C%22useFormatFromData%22%3Atrue%2C%22title%22%3A%22Year%22%2C%22slantedText%22%3Atrue%2C%22format%22%3A%22%22%7D&gco_vAxes=%5B%7B%22title%22%3A%22Rate%2F10%2C000%22%2C%22minValue%22%3A0%2C%22maxValue%22%3Anull%2C%22viewWindowMode%22%3A%22pretty%22%2C%22viewWindow%22%3A%7B%22max%22%3Anull%2C%22min%22%3A0%7D%2C%22useFormatFromData%22%3Atrue%7D%2C%7B%22viewWindowMode%22%3A%22pretty%22%2C%22viewWindow%22%3A%7B%7D%2C%22useFormatFromData%22%3Atrue%7D%5D&gco_isStacked=false&gco_animation=%7B%22duration%22%3A500%7D&gco_booleanRole=certainty&gco_vAxis=%7B%22format%22%3A%22%22%7D&width=500&height=300",
           "map": ""
         }
       }

@@ -42,8 +42,7 @@ a:hover{
 }
 
 .chart { 
-  width:49%; 
-  height:400px;
+  width:49%;
   scrolling:no; 
   frameBorder:0;
   border: solid 4px white;
@@ -52,9 +51,11 @@ a:hover{
 
 #map{
   float:left;
+  height:380px;
 }
 
 #graph{
+  height:400px;
   float:right;
 }
 
@@ -117,7 +118,7 @@ a:hover{
 
 #legend{
   background: white;
-  width:490px;
+  width:492px;
   height: 20px;
   margin: 0 0px;
   position: absolute;

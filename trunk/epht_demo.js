@@ -43,6 +43,14 @@ $(document).ready(function(){
     });
     // add listener to sub-sets
     $('#data_sets').live('change',function(){
+      if($('#disease_sets').attr('value') == 'Cancer'){
+        var tempYears = data_sets[this.value][$('#data_sets').attr('value')]['years'];
+        $('#years').children().remove();
+        var yearSort = [];
+        for(var year in tempYears){
+          yearSort.push(year);
+        }
+      };
       updateCharts();
     });
     // add listener to years
@@ -73,13 +81,14 @@ function updateCharts(){
   var year = $('#years option:selected').attr('value');
 
   var data = data_sets[disease][dataset];
-  // console.log(disease);
-  // console.log(dataset);
-  // console.log(data);
   $('#map').attr('src',data['years'][year]['map']);
   // use when chart embedds are in json
-  // $('#graph').attr('src',data['years'][year]['chart']);
-  $('#graph').attr('src',chartConfig(data['tid'],year));
+  if(data['years'][year]['chart']){
+    $('#graph').attr('src',data['years'][year]['chart']);
+  }
+  else{
+    $('#graph').attr('src',chartConfig(data['tid'],year));
+  }
   $('#table').attr('src',data['table']);
   $('#title').text(data['title']);
   $('#explore').attr('href','https://www.google.com/fusiontables/data?docid='+data['tid']);
