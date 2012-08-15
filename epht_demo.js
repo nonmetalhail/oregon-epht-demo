@@ -50,7 +50,13 @@ $(document).ready(function(){
         for(var year in tempYears){
           yearSort.push(year);
         }
-      };
+        yearSort.sort().reverse();
+        for(var i in yearSort){
+          $('#years').append('<option value = "'+
+            yearSort[i]+'">'+yearSort[i]+'</option>');
+        }
+        $('#years option[value="'+yearSort[0]+'"]').trigger('change');
+      }
       updateCharts();
     });
     // add listener to years
