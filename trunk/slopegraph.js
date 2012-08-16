@@ -32,7 +32,7 @@
  *
  */
 
-var FT_API_KEY = 'AIzaSyA7_yvmF6Aj0z9ctqiVVS5BI9cVIqx7F1w'
+var FT_API_KEY = 'AIzaSyAm9yWCV7JPCTHCJut8whOjARd7pwROFDQ'
 
 // location of the json datafile
 var json_file_location = 'json/slopegraph.json'
