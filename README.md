@@ -1,6 +1,6 @@
 # oregon-epht-demo
 
-## Fusion table was deprecated by Google in 2020. As such, no demos function anymore
+## Fusion table was deprecated by Google in 2020. As such, no demos are functional anymore
 
 A Fusion Tables demonstration for Oregon DHS using their EPHT datasets
 
